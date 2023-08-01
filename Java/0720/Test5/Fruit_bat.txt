@@ -1,0 +1,7 @@
+javac -d . *.java
+java FruitSalesMain3
+pause
+
+
+// javac -d . *.java
+// package가 있으면, package를 같이 만들면서 컴파일 하는 옵션

@@ -1,0 +1,22 @@
+== 접근제어 지시자와 접근 허용범위 ==
+
+		클래스 	동일	상속받은	이외의
+지시자		내부	패키지	클래스	영역
+
+private		O	X	X	X
+default		O	O	X	X
+protected	O	O	O	X
+public		O	O	O	O
+
+
+class Number{
+	private int n1;
+	int n2;
+	protected int n3;
+	public int n4;
+}
+
+
+* encapsulation (캡슐화) 
+ : 객체지향 프로그래밍의 핵심 중 하나인 캡슐화는, 특정 객체의 속성과 기능을 캡슐로 만들어 외부로부터 데이터를 보호하는 것이다. 
+ : 캡슐화의 목적은 (1) 데이터 보호, (2) 내부적으로만 쓰이는 데이터에 대한 불필요한 외부 노출 방지가 있다.

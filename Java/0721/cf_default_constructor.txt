@@ -1,0 +1,7 @@
+class AAA{
+	AAA(){}
+}
+
+public class BBB{
+	public BBB(){}
+}

@@ -1,0 +1,10 @@
+13. int형 정수 5를 문자열로 바꾸는 메소드
+ String.valueOf(int)
+ Integer.toString(int)
+
+14. 문자열 "5"를 정수 5로 바꾸는 메소드
+ Integer.parseInt(String)
+
+15. 두 개의 문자열을 비교하여 같은지 아닌지를 판별하는 두 가지 방법
+String.equals(String2)
+String==String2

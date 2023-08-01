@@ -1,0 +1,11 @@
+javac ABMain.java
+mkdir sub
+move AAA.class sub\AAA.class	// move + 대상 파일 + 위치\파일명
+move BBB.class sub\BBB.class
+set classpath=.;.\sub	// 참조할 class는 지금 있는 dir와 해당 dir 안의 sub dir 까지 포함
+java ABMain
+pause			// for, cmd 창이 바로 종료되지 않도록
+
+
+* batch file
+ : 명령어를 한번에 적어 놓고 실행할 수 있게 만들어 둔 명령어 스크립트 

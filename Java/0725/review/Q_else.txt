@@ -1,0 +1,38 @@
+3. java.lang은 default 	
+
+4. (double)(int)((2.456789*100))/100
+
+5. Math.round(2.456789)
+
+6. 0-(2^16-1)
+
+7. numOfApples/numOfBucket + (numOfApples%numOfBucket>0? 1 : 0)
+
+8. (num>=0? (num>0 ? "양수" : "0") : "음수")
+
+9. num>100 ? num - (num%100) : num%100
+
+10. (int)((5/9f * (fahrenheit - 32))*100 + 0.5) / 100f;
+
+11.
+byte c = (char)a+b;
+ch = (char)(ch+2);
+float f = (3/2)f;
+long l = 3000*3000*3000L;
+double d = 0.1;	
+boolean result = (float)d == f2;
+
+12. -128
+13. 127
+
+14. Math.round : 반올림  
+Math.round(3.56); // 3.6
+Math.round(3.45); // 3.0
+
+15. 16.  method overloading _ 자바 컴파일러가 method signature(method명 + 매개변수 조합)로 구분하게 되는데 같은 이름의 method명과 각기 다른 매개변수 자료형 및 갯수로 이루어진 method들로 한해서는 같은 메소드를 호출 할 수 있게 됨(다형성 구현)
+
+17. 
+Math.random() : 0-1 사이의 난수를 발생시킴
+Math.random()*10 -> 0~9 사이의 난수
+
+18. 문자열의 변경은 불가능

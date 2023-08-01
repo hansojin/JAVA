@@ -1,0 +1,13 @@
+1. 클래스 이름은 대문자로 시작한다.
+ex) class PrimeNumber
+
+2. 메소드 이름과 변수이름은 소문자로 시작한다.
+public void isPrimeNumber()
+int primeNumber
+
+3. 단어와 단어가 만나는 첫 글자는 대문자로 준다.
+primeNumber
+
+4. 심볼릭 콘스탄트(Symbolic Constant)는 전체를 대문자로 주는데
+단어와 단어가 만나는 부분을 언더바(_)로 연결한다.
+PRIME_NUMBER

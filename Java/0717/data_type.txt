@@ -1,0 +1,60 @@
+boolean	참과 거짓		1 바이트 	true, false
+
+char	문자		2 바이트	모든 유니코드 문자
+
+byte	정수		1 바이트	-128 ~ 127
+short	정수		2 바이트	
+int	정수		4 바이트
+long	정수		8 바이트
+
+float	실수		4 바이트
+double   실수		8 바이트
+
+
+byte의 경우 : 
+- 2^8 = 2^7 *2
+- 최상위 비트(MSB)가 1이면, 음수다. 
+  : 1000000는 음수로 표현할 수 있는 가장 큰 수
+  : 0111111는 양수로 표현할 수 있는 가장 큰 수 
+  : 그래서 -2^(n-1) ~ 2^(n-1)-1 까지 표현할 수 있는거
+
+
+
+class DataTypeTest1
+{
+	public static void main(String[] args)
+	{
+		short num1 = 5;
+		short num2 = 3;
+		// short result = num1 + num2;   // error
+		short result = short(num1+num2);
+	}
+}
+
+class DataTypeTest2
+{
+	public static void main(String[] args)
+	{
+		int num1 = 5;
+		short num2 = 3;
+		// int result = num1 + num2;
+		int result = num1 + (int)num2;
+	}
+}
+
+
+class DataTypeTest3
+{
+	public static void main(String[] args)
+	{
+		int num = (int)4.5;
+		// int num2 = 10000000000;
+		// long num2 = 10000000000;
+		long num2 = 10000000000L;
+
+		//float num3 = 4.5;
+		float num3 = 4.5F;
+	}
+}
+
+

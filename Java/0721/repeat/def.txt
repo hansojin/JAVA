@@ -1,0 +1,21 @@
+1. 접근제어 지시자와 접근 허용범위
+
+		클래스 	동일	상속받은	이외의
+지시자		내부	패키지	클래스	영역
+
+private		O	X	X	X
+default		O	O	X	X
+protected	O	O	O	X
+public		O	O	O	O
+
+2. 생성자는
+ : class name = constructor name
+ : X return
+ : can init constant 
+ : class must have constructor
+
+3. public 클래스는
+ : 우선 public은 모든 접근 허용하는 접근 제한자
+ : 하나의 자바 파일에서, 하나의 public class만 설정 가능
+ : (public) class명과 파일명이 동일해야함
+

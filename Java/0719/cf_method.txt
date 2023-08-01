@@ -1,0 +1,40 @@
+return문
+return문은 현재 실행중인 메서드를 종료하고 호출한 메서드로 되돌아간다. 
+지금까지 반환값이 있을 때만 return문을 썼지만, 원래는 반환값의 유무에 관계없이 모든 메서드에는 적어도 하나의 return문이 있어야 한다. 
+그런데도 반환타입이 void인 경우, 
+return문 없이도 아무런 문제가 없었던 이유는 컴퍼일러가 메서드의 마지막에 'return;'을 자동적으로 추가해 주었기 때문이다.
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		System.out.println(hi());	// 반환값이 없는데 println에 있어서 error
+	}
+	
+	public static void hi() {
+		System.out.println("hi");
+	}
+}
+
+int max(int a, int b){
+	if(a > b)
+		return a;	// 조건식이 참일 때만 실행된다. 그래서 error
+}
+
+int add(int x, int y){
+	int result = x + y;
+	return result;
+}
+
+int add (int x, int y){
+	return x + y;
+}
+
+int abs(int x){
+	if(x>=0) return x;
+	else return -x;
+}
+
+int abs(int x){
+	return x>=0 ? x : -x;
+}
