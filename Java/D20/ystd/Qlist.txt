@@ -1,0 +1,105 @@
+﻿1. 인스턴스 생성이 불가능한 클래스 만들기
+ : abstract
+
+2. 완전하지 않은 메소드 만들기
+ : abstract / interface
+
+3. 문제3 폴더에 있는 MyFriendInfoBook.java에서 Friend 클래스를 인스턴스 생성이 되지 않는 클래스로 만들어라. 그리고 Friend 클래스의 showBasicInfo 메소드를 몸통이 없는 메소드로 선언하라.
+ : abstract Friend, abstract void showBasicInfo();
+
+4. abstract 클래스를 상속하는 하위 클래스에서 반드시 해야 할 일은?
+다음 코드의 문제점을 찾아라.
+abstract class AAA{
+	void methoodOne() { . . . }
+	abstract void methodTwo();
+}
+
+class BBB extends AAA{
+	void methodThree() { . . . }
+}
+ : methodTwo() 구체화 하기(=override)
+
+5. 홍만군은 이번 프로젝트의 실무 담당자이다. 그리고 이번 프로젝트에서 필요한 기능 중 일부를 A사에 의뢰할 생각이다. 홍만군이 의뢰한 기능을 요약하면 다음과 같다.
+	* 이름과 주민등록 번호를 저장하는 기능의 클래스가 필요하다.
+	* 이 클래스에는 주민등록 번호를 기반으로 사람의 이름을 찾는 기능이 포함되어야 한다.
+그리고 이들 기능을 담당하는 메소드는 다음과 같이 정의하고자 하였다.
+	* 주민등록번호와 이름의 저장 - void addPersonalInfo(String name, String perNum)
+	* 주민등록번호를 이용한 검색 - String searchName(String perNum)
+홍만군이 생각한 해결방법
+	: "클래스를 하나 정의해야겠다. 그리고 A사에는 이 클래스를 상속해서 기능을 완성해 달라고 요구하고, 난 이 클래스를 기준으로 프로젝트를 진행해야겠다.
+6. 홍만군이 A사에 의뢰한 내용과 홍만군이 진행한 프로젝트를 합쳐서 하나의 프로그램으로 만드시오.
+
+7. interface란?
+ : 클래스들이 필수로 구현해야하는 추상 자료형
+ : abstract method로만 이루어져 있는 클래스를 대체
+
+8. 문제8 폴더에 있는 AbstractInterface.java를 인터페이스를 이용하는 형태로 변경하시오.
+ : abstract, extends -> interface, implements
+
+9. 두개의 interface를 한 클래스에서 구현하시오.
+ : implements A,B
+
+10. 인터페이스를 상속하시오.
+ : extends A implements B
+
+11. 다음 클래스를 인터페이스를 이용하여 바꿔보시오.
+public class Week{
+	public static final int MON=1;
+	public static final int TUE=2;
+	public static final int WED=3;
+	public static final int THU=4;
+	public static final int FRI=5;
+	public static final int SAT=6;
+	public static final int SUN=7;
+}
+ : interface Week(){		// as, interface 내 변수는 public static final 로 선언
+	int MON=1;
+	int TUE=2;
+	int WED=3;
+	int THU=4;
+	int FRI=5;
+	int SAT=6;
+	int SUN=7;	
+}
+	
+12. System.out.println 오버로딩 된 메소드 중에 public void println(Object x)가 없다고 가정하고 문제12 폴더에 있는 ClassPrinter에 있는 class에 print 메소드를 만드시오.
+
+13. 12번에 있는 문제에서 정의하고 있는 print 메소드에 다음의 기능을 추가하시오.
+"인터페이스 UpperCasePrintable을 구현하는 클래스의 인스턴스가 print 메소드의 인자로 전달되면 문자열을 전부 대문자로 출력한다."
+
+14. 문제14 폴더에 있는 CompileErroExample.java에서 Computer 클래스를 인터페이스로 바꾸고 IPTV가 TV를 상속받고 Computer를 구현하는 형태로 바꾸시오.
+
+15. 인터페이스를 이용해서 상속을 대신하기
+문제 14를 푼 후에 문제 15 폴더에 있는 MultiInheriAlternative.java에서는 다중상속을 어떻게 인터페이스가 대신하는지를 보이고 있다. 이 예제에서 보이는 내용을 참조하여, 이 예제의 IPTV 클래스를 다음의 형태로 변경하자.
+class IPTV implements TV, Computer{
+	. . .
+}
+
+16. Inner 클래스에 대해서 설명하고 예제를 하나 작성하시오.
+17. Nested 클래스에 대해서 설명하고 예제를 하나 작성하시오.
+ :  바깥쪽 정의된 클래스를 outer class
+ : 그 안에 정의된 클래스를 inner class
+ : 근데, 그중에서도 static으로 선언되면 static inner / nested class 라고 함
+
+ : nested class는 outer 클래스의 static 멤버의 접근으로 acess 가능 -> outer class의 인스턴스 없이 생성 불가능
+ : inner 클래스 내에서는 outer 클래스의 멤버들에 직접 접근 가능 (even though outer is private)
+
+ : 사용 이유 _ 논리적으로 묶는 수단, 캡슐화, 가독성 향상, 유지보수성 향상
+
+18. 다음의 소스코드는 문제가 있는 소스이다. 소스의 문제점을 수정하시오.(문제18 폴더)
+class OuterClass{
+	...
+	public LocalClass createLocalClassInst(){
+		class LocalClass{
+			...
+		}
+		return new LocalClass();
+	}
+}
+
+19. 문제19 폴더에 있는 소스는 문제가 있는 소스이다. 그 문제를 고치고 왜 그런지 설명하시오.
+(JDK 1.8부터는 에러 아님)
+
+20. 문제20 폴더에 있는 LocalParamClassTest.java에 있는 Local 클래스를 Anonymous클래스로 만들어보자.
+
+21. Anonymous 클래스를 만들어보자.
