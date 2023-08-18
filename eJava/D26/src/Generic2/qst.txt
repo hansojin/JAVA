@@ -1,0 +1,114 @@
+문제1. AAA 클래스에 매개변수가 한개인 제네릭 메소드를 정의하고 main 메소드가 있는 Test 클래스에서 호출해 보자.
+
+문제2. 둘 이상의 매개변수를 받는 제네릭 메소드를 정의하고 호출해 보자.
+
+문제3. 둘 이상의 인스턴스 변수 기반의 제네릭 클래스를 정의해 보자.
+
+문제4. 아래에 정의된 클래스는 컴파일 시 에러가 발생한다. 
+여러분이 직접 컴파일을 해서 문제점이 무엇인지 확인하고, 문제점의 원인을 유추하기 바란다.
+class MyClass
+{
+	public <T> void simpleMethod(T param)
+	{
+		param.showData();
+		System.out.println(param);
+	}
+}
+
+문제5. 문제5폴더에 있는 소스코드는 컴파일시 에러가 발생한다. 이것을 에러가 없게 수정하자.
+Generic 부분은 수정하지 않고 메소드의 몸통만 수정해서 에러가 없게 하자.(showInstanceAncestor, showInstanceName 메소드의 내용부분)
+
+interface SimpleInterface{
+	public void showYourName();
+}
+
+class UpperClass{
+	public void showYourAncestor(){
+		System.out.println("UpperClass");
+	}
+}
+
+class AAA extends UpperClass implements SimpleInterface{
+	public void showYourName(){
+		System.out.println("Class AAA");
+	}
+}
+
+class BBB  extends UpperClass implements SimpleInterface{
+	public void showYourName() {
+		System.out.println("Class BBB");
+	}
+}
+
+class BoundedTypeParam{	
+	public static <T> void showInstanceAncestor(T param){
+		param.showYourAncestor();		
+	}
+	
+	public static <T> void showInstanceName(T param){
+		param.showYourName();
+	}
+	
+	public static void main(String[] args){
+		AAA aaa=new AAA();
+		BBB bbb=new BBB();
+		
+		showInstanceAncestor(aaa);
+		showInstanceName(aaa);
+		showInstanceAncestor(bbb);
+		showInstanceName(bbb);
+	}
+}
+
+문제6. 문제5에 있는 소스코드를 컴파일 해보면 컴파일 시에는 에러가 발생하지 않지만(javac BoundedTypeParam.java) 런타임시에는 오류가 발생한다(java BoundedTypeParam).
+제네릭 매개변수로는 Object 클래스에 정의된 메소드만 호출 가능하기 때문에, 아래 예제에서는 매개변수 param을 강제 형변환하고 있다. 
+그런데 이렇게 되면, 아래 코드는 자료형에 안전하지 않은 코드가 되어버린다. 
+쉽게 말해서 SimpleInterface 인터페이스를 구현하지 않은 인스턴스,또는 UpperClass를 상속하지 않은 인스턴스의 참조 값이 메소드에 전달되어도 컴파일 및 실행이되기 때문에, 앞서 말한 제네릭의 장점은 완전히 소멸되는 셈이다.
+
+interface SimpleInterface{
+	public void showYourName();
+}
+
+class UpperClass{
+	public void showYourAncestor(){
+		System.out.println("UpperClass");
+	}
+}
+
+class AAA implements SimpleInterface{
+	public void showYourName() {
+		System.out.println("Class BBB");
+	}
+}
+
+class BBB extends UpperClass{
+}
+
+
+class BoundedTypeParam{	
+	public static <T> void showInstanceAncestor(T param){
+		((UpperClass)param).showYourAncestor();
+		
+	}
+	
+	public static <T> void showInstanceName(T param){
+		((SimpleInterface)param).showYourName();
+	}
+	
+	public static void main(String[] args){
+		AAA aaa=new AAA();
+		BBB bbb=new BBB();
+		
+		showInstanceAncestor(aaa);
+		showInstanceName(bbb);
+	}
+}
+
+그러니까, 문제5를 안정성있는 형태로 바꾸어 보자.
+안정성있는 형태로 바꾸고 컴파일 해보면(javac BoundedTypeParam.java) 이제는 컴파일 시에 에러가 나오는 것을 볼 수가 있다. 
+자료형에 대한 안정성이 보장되었다.
+
+
+
+
+
