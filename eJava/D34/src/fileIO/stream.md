@@ -21,7 +21,7 @@
  		* FileInputStream
  		* BufferedInputStream
  		* DataInputStream		
- 	*주요 메소드 
+ 	* 주요 메소드 
  		* read()
  			* 1byte를 읽은 후 읽은 byte 리턴(int)
  		* read(byte[] b)
