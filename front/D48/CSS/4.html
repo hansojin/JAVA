@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1:active{color: red;}
+        h2:hover{color: aqua;}
+
+        input:enabled { background-color: lightyellow }
+        input:disabled { background-color: lightgray }
+        input:focus { background-color: orange; }
+        input:checked{width: 50px; height: 50px;}
+
+    </style>
+</head>
+<body>
+    <h1>ACTIVE for click</h1>
+    <h2>HOVER for mouse on</h2>
+
+    <h3>사용 가능</h3>
+    <input />
+    <h3>사용 불가능</h3>
+    <input disabled="disabled"/><br>
+    <input type="checkbox">
+</body>
+</html>
+
+<!-- 선택자 형태		설명
+    :active			마우스로 클릭한 태그
+    :hover			마우스 커서를 올린 태그
+    :checked		체크 상태의 input 태그 
+    :focus			초점이 맞추어진 input 태그 
+    :enabled		사용 가능한 input 태그 = input 태그에 값을 입력할 수 있는
+    :disabled		사용 불가능한 input 태그  -->

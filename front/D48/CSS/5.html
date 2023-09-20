@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul { overflow: scroll;
+            border:solid 1px green;
+            height: 100px;
+            width: 100px; 
+        }
+        li {
+            list-style: none;
+            float:left; 
+	        padding: 15px;
+        }
+
+        li:first-child { color : red }
+        li:last-child { color : chartreuse }
+        li:nth-child(2n) { background-color: #FFF247; }
+        li:nth-child(3n+1) { background-color: #20F247; }
+        li:nth-child(4){color:white}
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>ONE</li>
+        <li>TWO</li>
+        <li>THREE</li>
+        <li>FOUR</li>
+        <li>FIVE</li>
+        <li>SIX</li>
+        <li>SEVEN</li>
+    </ul>
+</body>
+</html>
+
+<!-- 
+구조 선택자 형태			        설명
+:first-child			    형제 관계에서 첫 번째로 등장하는 태그 선택
+:last-child			        형제 관계에서 마지막으로 등장하는 태그 선택
+:nth-child(수열)		    형제 관계에서 앞에서 수열 번째로 등장하는 태그 선택
+:nth-last-child(수열)		형제 관계에서 뒤에서 수열 번째로 등장하는 태그 선택 
+
+* overflow 에 사용할 수 있는 값
+1. visible (default) : 넘칠 경우 컨텐츠가 상자 밖으로 보여짐
+2. hidden : 넘치는 부분은 잘려서 보여지지 않음
+3. scroll : 스크롤바가 추가되어 스크롤할 수 있음 (가로, 세로 모두 추가됨)
+4. auto : 컨텐츠 량에 따라 스크롤바를 추가할지 자동으로 결정 (필요에 따라 가로, 세로 별도로 추가될 수도 있음)
+-->
