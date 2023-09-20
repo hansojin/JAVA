@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Float</title>
+	<style>
+		div {
+			border: 3px solid #73AD21;
+			padding: 5px;
+		}
+		img { float: left; }
+        /* float 준거 아래서 삭제하기 */
+		#paragraph { clear: left; }
+		.good { overflow: auto; }
+        .great {
+            height : 100px;
+            overflow : hidden;
+        }
+	</style>
+</head>
+
+<body>
+
+	<h1>overflow 속성을 이용한 크기 조정</h1>
+	<div> &nbsp; 이미지와 함께 하고 싶은 내용
+		<img src="moon.jpg" alt="moon" width="245" height="185">
+	</div>
+    
+	<p id="paragraph">
+        <br><b>overflow</b> 속성값을 <b>auto</b>로 주면 자동으로 컨테이너 요소의 크기도 함께 늘어납니다!
+    </p>
+
+	<div class="good"> &nbsp; overflow : <b>auto </b>
+		<img src="moon.jpg" alt="moon" width="245" height="185">
+	</div>
+    <br>
+    <div class="great"> &nbsp; overflow : <b>hidden </b>
+		<img src="moon.jpg" alt="moon" width="245" height="185">
+	</div>
+
+</body>
+
+</html>

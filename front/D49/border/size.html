@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 Style Property Basic</title>
+    <style>
+        #percent p:nth-child(1) { }
+        #percent p:nth-child(2) { font-size: 100%; }
+        #percent p:nth-child(3) { font-size: 150%; }
+        #percent p:nth-child(4) { font-size: 200%; }
+
+        #em p:nth-child(1) { }
+        #em p:nth-child(2) { font-size: 1.0em; }
+        #em p:nth-child(3) { font-size: 1.5em; }
+        #em p:nth-child(4) { font-size: 2.0em; }
+
+        #px p:nth-child(1) { }
+        #px p:nth-child(2) { font-size: 16px; }
+        #px p:nth-child(3) { font-size: 24px; }
+        #px p:nth-child(4) { font-size: 32px; }
+    </style>
+</head>
+<body>
+    <div id = "percent">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <hr>
+    <div id = "em">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <hr>
+    <div id = "px">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+</body>
+</html>
+
+<!--
+CSS 크기 단위 
+
+단위		설명
+%		백분율 단위
+em		배수 단위
+px		픽셀
+-->

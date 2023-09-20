@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display</title>
+    <style>
+        #box {
+            display: inline;
+            background-color: red;
+            width: 100px;
+            height: 50px;
+            margin: 10px;
+        }
+        #box2 {
+            display: inline-block;
+            background-color: red;
+            width: 100px;
+            height: 50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>inline이라 안 먹음</p>
+    <span>더미 객체</span>
+    <div id="box">대상 객체</div>
+    <span>더미 객체</span>
+    <p>의미 없는 더미 객체</p>
+
+    <hr>
+    <p>inline-block은 먹음</p>
+    <span>더미 객체</span>
+    <div id="box2">대상 객체</div>
+    <span>더미 객체</span>
+    <p>의미 없는 더미 객체</p>
+</body>
+</html>
+
+
+<!-- 
+    inline과 block 
+        : 좌우 margin O
+        : block은 상하 margin도 가능
+
+    inline 과 inline-block  
+        : 줄바꿈 없이 영역 공유
+        : inline-block은 width,height를 통해 크기 지정 가능
+ -->
