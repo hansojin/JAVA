@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS</title>
+    <style>
+      body {
+        counter-reset: chapter 0;
+      }
+      h1:before {
+        counter-increment: chapter;
+        /* 만약 n씩 증가시키고 싶다면 chapter n; */
+        content: counter(chapter) ". ";
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Lorem</h1>
+    <h2>Ipsum</h2>
+    <h2>Dolor</h2>
+
+    <h1>Consectetur</h1>
+    <h2>Adipiscing</h2>
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS</title>
+    <style>
+      body {
+        counter-reset: chapter 0;
+      }
+      h1:before {
+        counter-increment: chapter;
+        content: counter(chapter) ". ";
+      }
+      h1 {
+        counter-reset: section 0;
+      }
+      h2:before {
+        counter-increment: section;
+        content: counter(chapter) "." counter(section) ". ";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lorem</h1>
+    <h2>Ipsum</h2>
+    <h2>Dolor</h2>
+    <h1>Consectetur</h1>
+    <h2>Adipiscing</h2>
+  </body>
+</html>

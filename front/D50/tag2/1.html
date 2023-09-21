@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1.st:before {
+            content : "String Content added ";
+            color : red;
+        }
+        hr.ur:before{
+            content : url("moon.jpg");
+            margin-right:10px;
+        }
+        h1.at:before{
+            content: attr(class);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class ="st">Lorem</h1>
+    <h1 class ="ur">Ipsum</h1>
+    <h1 class ="at">Dolor</h1>
+</body>
+</html>
