@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 Font Property</title>
+    <style>
+        .font_big { font-size: 2em;}
+        .font_italic { font-style: italic; }
+        .font_bold { font-weight: bold; }
+        .font_center { text-align: center; }
+
+        .button {
+            width: 150px;
+            height: 70px;
+            background-color: #FF6A00;
+            border: 10px solid #FFFFFF;
+            border-radius: 30px;
+            box-shadow: 5px 5px 5px #A9A9A9;
+	        /* offset-x | offset-y | blur-radius | color 
+                offset-x : 가로 위치입니다. 양수면 오른쪽에, 음수면 왼쪽에 그림자가 만들어집니다. (필수)
+                offset-y : 세로 위치입니다. 양수면 아래쪽에, 음수면 위쪽에 그림자가 만들어집니다. (필수)
+                blur-radius : 그림자를 흐릿하게 만듭니다. 값이 클 수록 더욱 흐려집니다.
+                color : 그림자 색을 정합니다. */
+            }
+
+        .button > a {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="button">
+        <a href="#" class="font_big font_italic font_bold font_center">Click</a>
+    </div>
+</body>
+</html>
+

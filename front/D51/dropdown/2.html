@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            background-color: greenyellow;
+            height:50px;
+            width: 80px;
+            color : white;
+            text-align: center;
+            padding : 12px 22px;
+        }
+        #section:hover #menu{
+            display: block;
+        }
+        #menu{
+            
+            width: 100px;
+            height: 65px;
+            border : 0.5px solid lightgray;
+            background-color: lightgoldenrodyellow;
+            text-align: left;
+            padding-left:0;
+            display:none;
+        }
+        ul{
+            list-style: none;  
+        }
+        li a{
+            text-decoration: none;
+        }
+        li:hover{
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dropdown Menu</h1>
+    <p>Move the mouse over the button to open the dropdown menu.</p>
+
+    <div id="section">
+        <div id = "box">Dropdown</div>
+        <div id ="menu">
+            <ul>
+                <li><a href="#">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+            </ul>    
+        </div>
+        <p><b>Note: </b>We use href="#" for test links. In a real web site this would be URLs.</p>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display : none;
+            box-shadow : 0 8px 16px gainsboro
+
+        }
+        .desc {
+            height : 20px;
+            text-align: center;
+            padding : 8px 0;
+            color : darkgray;
+        }
+        .content:hover .hide{
+            display : block;
+        }
+        
+    </style>
+</head>
+<body>
+<h1> Dropdown Image</h1>
+<p>Move the mouse over the image below to open the dropdown content.</p>
+
+<div class="content">
+    <img src="img_5terre.jpg" width="100px">
+    <div class = "hide">
+        <img src="img_5terre.jpg" height="200">
+        <p class = "desc">Beautiful Cinque Terre</p>
+    </div>
+    
+
+</div>
+</body>
+</html>
