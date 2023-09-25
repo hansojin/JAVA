@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content{
+            position: relative;
+            display: inline-block;
+        }
+        #hidden{
+            position : absolute;
+            min-width: 240px;
+            background-color : whitesmoke;
+            text-align: center;
+            display : none;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+        #content:hover #hidden{
+            display : block;
+        }
+        #content:hover{
+            cursor: pointer;
+        }
+        #desc {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2> Dropdown Image</h2>
+    <p>Move the mouse over the image below to open the dropdown content.</p>
+
+    <div id = 'content'>
+        <img src="img_5terre.jpg" style="height:70px">
+        <div id = "hidden">
+            <img src="img_5terre.jpg">
+            <div id = 'desc'>Beautiful Cinque Terre</div>
+        </div>
+    </div>
+</body>
+</html>

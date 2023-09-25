@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 Selector Basic Page</title>
+    <style>
+
+	.box>p:nth-child(5){
+		color:red;
+	}
+    /* p:nth-child(5){
+		color:red;
+	} */
+	
+    .box > p:nth-child(4){
+		color : blue;
+	}  	
+
+    .box>p:nth-of-type(2){
+        color : orange;
+    }
+    
+    </style>
+</head>
+<body>
+	<div class="box">
+		<p>     1. p태그1</p>
+		<span>  2. span태그1</span>
+		<p>     3. p태그2</p>
+		<span>  4. span태그2</span>
+		<p>     5. p태그3</p>
+	</div>
+</body>
+</html>
+<!-- 
+* nth-child(n) 
+    * 부모 element의 모든 자식 중 n번째
+* nth-of-type(n)    
+    * 부모 element의 특정 자식 중 n번째 
+
+---
+
+red의 경우, 
+p에 의해서 box의 p를 찾아가고, nth-child에 의해 body>5th child를 찾아감
+또 다르게 해석하자면, 5번째 자식이면서, p면 적용된다.로 해석할 수 있음
+
+blue의 경우에도, 
+p에 의해서 box의 p를 찾아가고, nth-child에 의해 body>4th child를 찾아감
+자식 요소의 순서를 셀때는 모든 요소를 다 포함해서 세지만, 
+적용되는 요소가 선택자에서 선택한 요소 타입과 다르기 때문에 적용되지 않음
+
+참고 : https://thrillfighter.tistory.com/575
+-->
