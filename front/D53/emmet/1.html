@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    * 자식요소 '>' 
+    예시 ) div>ul>li
+    <div>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+
+    * 형제요소 '+' 
+    예시 ) div+h1+p
+    <div></div>
+    <h1></h1>
+    <p></p>
+
+    * 여러번 반복하기 '*'
+    예시 ) ul>li*5
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    예시2) ul*2>li*3
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    * 한단계 올라가기 '^'
+    예시 ) div+div>p>span>em^bq
+    <div></div>
+    <div>
+        <p>
+            <span><em></em></span>
+            <blockquote></blockquote>
+        </p>
+    </div>
+
+    예시 ) div+div>p>span+em^^^bq
+    <div></div>
+    <div>
+        <p><span></span><em></em></p>
+    </div>
+    <blockquote></blockquote>
+
+    * 그룹만들기 '()'
+    예시) form*2>input*3+ul>li*4+span*2
+    <form action="">
+        <input type="text"><input type="text"><input type="text">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <span></span><span></span></ul>
+    </form>
+    <form action="">
+        <input type="text"><input type="text"><input type="text">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <span></span><span></span></ul>
+    </form>
+
+    예시2 ) (form*2>input*3)+(ul>li*4+span*2)
+    <form action=""><input type="text"><input type="text"><input type="text"></form>
+    <form action=""><input type="text"><input type="text"><input type="text"></form>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <span></span><span></span></ul>
+
+    * 텍스트 작성하기 '{}'
+    예시 ) h1{List}+ul>li{list}*3
+    <h1>List</h1>
+    <ul>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+    </ul>
+
+    * numbering '$', '@'
+    예시 ) ul>li{list$}*5
+    <ul>
+        <li>list1</li>
+        <li>list2</li>
+        <li>list3</li>
+        <li>list4</li>
+        <li>list5</li>
+    </ul>
+
+    예시) ul>li{link$@3}*5
+    <ul>
+        <li>link3</li>
+        <li>link4</li>
+        <li>link5</li>
+        <li>link6</li>
+        <li>link7</li>
+    </ul>
+
+    * ID 속성 부여하기 '#'
+    예시 ) h1#title
+    <h1 id="title"></h1>
+
+    예시 ) #title (태그없이 #는 div 태그 사용)
+    <div id="title"></div>
+
+    * class 속성 부여하기 '.'
+    예시 ) h1.title
+    <h1 class="title"></h1>
+
+    예시 ) .title
+    <div class="title"></div>
+
+    예시 ) .main.main_title (띄어쓰기로 나뉨)
+    <div class="main main_title"></div>
+
+    * 그외 속성 '[속성='값']'
+    예시 ) input[type="password" name="pw" placeholder="Enter pw plz"]
+    <input type="password" name="pw" placeholder="Enter pw plz">
+
+</body>
+</html>
