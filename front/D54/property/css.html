@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color:red !important;
+        }
+        p{
+            color:blue;
+        }
+        p{
+            color:orange !important;
+        }
+        .a{
+            font-variant: normal;
+        }
+        .b{
+            font-variant: small-caps;
+        }
+        .c{
+            text-transform: captialize;
+        }
+        .d{
+            text-transform: uppercase;
+        }
+        .e{
+            text-transform: lowercase;
+        }
+        span{
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <p> 
+        나중에 설정한 값이 적용되지 않게 하려면, 속성값 뒤에 <span>!important</span> 를 붙여주자
+        다시 속성값을 재설정 하고 싶다면, !important를 다시 붙여주면 된다 
+    </p>
+    <br>
+    <div class="a"><span>'small-caps' makes lowercase to small uppercase, just like below paragraph. This is font-vairant : normal. </span></div><br>
+    <div class="b">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus iusto quos, aspernatur commodi exercitationem recusandae necessitatibus deserunt aperiam aut? Ipsa vitae earum recusandae laudantium ullam quis praesentium a incidunt iure?</div><br>
+    <div class="c"><span>'Captialize' makes first letter of each sentences in Uppercase. </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus iusto quos, aspernatur commodi exercitationem recusandae necessitatibus deserunt aperiam aut? Ipsa vitae earum recusandae laudantium ullam quis praesentium a incidunt iure?</div><br>
+    <div class="d"><span>'UpperCase' makes all letter in Uppercase.</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus iusto quos, aspernatur commodi exercitationem recusandae necessitatibus deserunt aperiam aut? Ipsa vitae earum recusandae laudantium ullam quis praesentium a incidunt iure?</div><br>
+    <div class="e"><span>'LowerCase' makes all letter in Lowercase.</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus iusto quos, aspernatur commodi exercitationem recusandae necessitatibus deserunt aperiam aut? Ipsa vitae earum recusandae laudantium ullam quis praesentium a incidunt iure?</div><br>
+    <br>
+
+    <div id ='text'>
+        ' letter-spacing' 는 말그대로 글자 사이 간격
+        ' word-spacing '은 단어 사이 간격
+        양수면 space가 커지고 음수면 space가 더 작아짐
+    </div>
+</body>
+</html>

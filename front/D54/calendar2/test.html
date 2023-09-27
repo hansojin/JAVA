@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Sedgwick+Ave+Display&family=Skranji&family=Titan+One&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Skranji', cursive;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        caption {
+            font-size: 2em;
+            font-weight: bold;
+            padding-bottom: 15px;
+            padding-top: 30px;
+            color: #577699;
+        }
+
+        table {
+            border-radius: 10px;
+            border-style: hidden;
+            background-color: #F7FBFC;
+            position: relative;
+        }
+
+        th {
+            background-color: #D6E6F2;
+            font-size: 1.4em;
+        }
+
+        th:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        th:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        td:first-child,
+        th:first-child {
+            color: red;
+        }
+
+        td:last-child,
+        th:last-child {
+            color: blue;
+        }
+
+        th,
+        td {
+            width: 50px;
+            height: 80px;
+            color: black;
+
+        }
+
+        #date:hover {
+            border-radius: 50%;
+            background-color: #D6E6F2;
+
+        }
+        #today{
+            border-radius: 50%;
+            background-color: #aecef3;
+        }
+
+        #left {
+            float: left;
+            top: 130px;
+            right: 0px;
+            position: relative;
+            color: #577699;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 10000;
+            width: 50px;
+            height: 50px;
+        }
+
+        #right {
+            float: right;
+            top: 130px;
+            left: 0px;
+            position: relative;
+            color: #577699;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 10000;
+            width: 50px;
+            height: 50px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id='left' onclick='monthBf()'> ◀ </div>
+    <div id='right' onclick='monthAf()'> ▶ </div>
+    <div id="demo"></div>
+    <script>
+        let now = new Date();
+        let curYear = now.getFullYear();
+        let showYear = curYear;
+        let curMonth = now.getMonth();
+        let showMonth = curMonth;
+        let curLastDay = getLastDayofMonth();
+        let showLastDay = curLastDay;
+        let curMonthFirst = new Date(curYear, curMonth, 1);
+        let showMonthFirst = new Date(showYear, showMonth, 1);
+        let curMonthFirstDay = curMonthFirst.getDay();
+        let showMonthFirstDay = showMonthFirst.getDay();
+        let curDate = now.getDate();
+        console.log(curDate);
+
+        // 윤년 계산
+        function getLastDayofMonth() {
+            let lastDayOfTheMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            let leapYear = false;
+            if ((showYear % 4 == 0) && (showYear % 100 != 0) || (showYear % 400 == 0))
+                leapYear = true;
+            lastDayOfTheMonth[1] = leapYear ? 29 : 28;
+            return lastDayOfTheMonth[showMonth];
+        }
+        cal();
+
+        function monthBf() {
+            showMonth -= 1;
+            if (showMonth == -1) {
+                showMonth = 11;
+                showYear -= 1;
+            }
+            showMonthFirst= new Date(showYear, showMonth, 1);
+            showMonthFirstDay = showMonthFirst.getDay();
+            showLastDay = getLastDayofMonth();
+            cal();
+        }
+
+        function monthAf() {
+            showMonth += 1;
+            if (showMonth == 12) {
+                showMonth = 0;
+                showYear += 1;
+            }
+            showMonthFirst= new Date(showYear, showMonth, 1);
+            showMonthFirstDay = showMonthFirst.getDay();
+            showLastDay = getLastDayofMonth();
+            cal();
+        }
+        function cal() {
+            let flag = false;
+            if (showMonth== curMonth && showYear ==curYear){
+                flag=true;
+            }
+            console.log(flag);
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            const dayOfTheWeek = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+            let numOfWeeks = Math.ceil((showMonthFirstDay + showLastDay) / 7);
+            let date = 1 - showMonthFirstDay;
+            let table = `<table>`;
+            table += `<caption> ${showYear}<br> ${monthNames[showMonth]}</caption>`;
+            table += `<tr>`;
+            for (let i = 0; i < 7; i++) {
+                table += `<th>${dayOfTheWeek[i]}</th>`
+            }
+            table += `</tr>`;
+            for (let i = 0; i < numOfWeeks; i++) {
+                table += `<tr>`;
+                for (let j = 0; j < 7; j++) {
+                    if (date <= 0) {
+                        table += `<td></td>`;
+                        date++;
+                    }
+                    else if (date <= showLastDay) {
+                        if (flag && date == curDate){
+                            table += `<td id = 'today'>${date++}</td>`;
+                        }else{
+                            table += `<td id = 'date'>${date++}</td>`;
+                        }
+                    }
+                }
+                table += `</tr>`;
+            }
+            table += `</table>`;
+            document.getElementById("demo").innerHTML = table;
+        }
+
+    </script>
+</body>
+
+</html>
