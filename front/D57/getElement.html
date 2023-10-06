@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            font-size: 250%;
+            font-weight: bold;
+            height:80px;
+            width: 250px;
+            border : 2px solid gray;
+            border-radius: 20px;
+            margin: 50px 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id = "clickMe" onclick="clickEvent()">click me</button>
+    <p>과일 종류</p>
+
+    <div id="summer">
+        <p>수박</p>
+        <p>사과</p>
+    </div>
+    <div id="winter">
+        <p>바나나</p>
+        <p>딸기</p>
+    </div>
+    <script>
+        function clickEvent(){
+            alert("Button clicked!");
+            let elements = document.getElementById("winter");
+            let fruits = elements.getElementsByTagName('p');
+            for (let i = 0;i<fruits.length;i++){
+                console.log(fruits.item(i).textContent);
+            }
+        }
+    </script>
+</body>
+</html>

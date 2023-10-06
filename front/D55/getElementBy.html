@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>getElementsByTagName sample</title>
+</head>
+
+<body>
+    <p>과일 종류</p>
+    <div id="summer">
+        <p>수박</p>
+        <p>사과</p>
+    </div>
+    <div id="winter">
+        <p>바나나</p>
+        <p>딸기</p>
+    </div>
+    <button onClick="getElementsOne();">요소 취득</button>
+    <button onClick="getElementsTwo();">요소 취득</button>
+    <script>
+
+        function getElementsOne() {
+            let elements = document.getElementsByTagName('p');
+            let len = elements.length;
+            for (let i = 0; i < len; i++) {
+                console.log('Text: ' + elements.item(i).textContent);
+            }
+        }
+        
+        function getElementsTwo() {
+            let winter = document.getElementById('winter');
+            let elements = winter.getElementsByTagName('p');
+
+            let len = elements.length;
+            for (let i = 0; i < len; i++) {
+                console.log('Text: ' + elements.item(i).textContent);
+            }
+        }
+    </script>
+</body>
+
+</html>

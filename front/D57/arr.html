@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // delete
+        var arr = [1, 2, 3];
+        document.write(arr + '<br>');
+        delete arr[1];
+        document.write(arr + '<br><br>');
+
+        // splice(from, how many)
+        arr = [1, 2, 3];
+        document.write(arr + '<br>');
+        arr.splice(1, 1)
+        document.write(arr + '<br><br>');
+
+        // foreach way1
+        var items = ['item1', 'item2', 'item3'];
+        items.forEach(function (item) {
+            document.write(item + '<br>');
+        });
+
+        // foreach way2
+        items.forEach(item => document.write(item + '<br>'));
+
+        // for ... in 
+        var obj  = {
+            a: 1,
+            b: 2,
+            c: 3
+        };
+        document.write('<br>');
+
+        for (var prop in obj){
+            document.write(prop, obj[prop] + '<br>');
+        }
+
+        // for ... of
+        var iterable = [10,20,30];
+        document.write('<br>');
+
+        for (var value of iterable){
+            document.write(value + '<br>');
+        }
+
+        // 배열 추가
+        var add = ['a', 'b', 'c'];
+        document.write('<br>' + add +  '<br>');
+        add.push('d');
+        document.write(add +  '<br>');
+        add.unshift('A');     // 배열 앞쪽에 요소 추가
+        document.write(add +  '<br>');
+        add.splice(5,0,'e','f');    // index 4 위치에 e,f 추가
+        document.write(add +  '<br><br>');
+
+        // join
+        var arrray = [1,2,3,4];
+        document.write(arrray +  '<br>');             //1,2,3,4
+        document.write(arrray.join() +  '<br>');      //1,2,3,4
+        document.write(arrray.join('-') +  '<br><br>');   //1-2-3-4
+
+        document.write("<hr><br>");
+
+        // 배열 삽입 삭제 결합
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.write(fruits + "<br>");
+        document.write(fruits.toString() + "<br>");
+        document.write(fruits.join("*") + "<br>");
+        fruits.pop();
+        document.write(fruits + "<br>");
+        fruits.push("Kiwi");
+        document.write(fruits.length + "<br>");
+        document.write(fruits.shift() + "<br>");
+        fruits.splice(0, 0,'Lemon');
+        document.write(fruits + "<br>");
+        fruits[fruits.length] = 'Mango';
+        document.write(fruits + "<br>");
+        fruits.splice(2,1);
+        document.write(fruits + "<br>");
+        document.write(fruits.splice(2,2) + "<br>");
+
+        const myGirls = ["Cecilie", "Lone"];
+        const myBoys = ["Emil", "Tobias", "Linus"];
+        document.write(myBoys.concat(myGirls) + "<br>");
+
+        const arr1 = ["Cecilie", "Lone"];
+        const arr2 = ["Emil", "Tobias", "Linus"];
+        const arr3 = ["Robin", "Morgan"];
+        document.write(arr1.concat(arr2,arr3) + "<br>");
+
+        // 배열 정렬
+        const fruit = ["Banana", "Orange", "Apple", "Mango"];
+        document.write(fruit + "<br>");
+        fruit.sort();
+        document.write(fruit + "<br>");
+        fruit.reverse();    //  sort() 후에 정상 작동
+        document.write(fruit + "<br>");
+
+        const points = [40, 100, 1, 5, 25, 10];
+        document.write(points + "<br>");
+        points.sort(function(a,b){
+            return a-b;
+        });
+        document.write(points + "<br>");
+        points.sort(function(a,b){
+            return b-a;
+        });
+        document.write(points + "<br>");
+
+        function shuffle(arr){
+            arr.sort(() => Math.random()-0.5);
+        }
+        shuffle(points);
+        document.write(points + "<br>");
+        
+        // MAX MIN
+        document.write(Math.max(...points) + "<br>");
+        document.write(Math.min(...points) + "<br>");
+
+        document.write("<hr><br>");
+        
+        // forEach
+        var numbers = [45, 4, 9, 16, 25];
+        document.write(numbers + '<br>');
+
+        numbers.forEach(i => document.write(i * 2 + "&nbsp"));
+        document.write('<br>');
+
+        // 조건 filter
+        const filter1 = numbers.filter(n => n > 18);
+        document.write(filter1 + '<br>');
+
+        // reduce((누적값, 현재 요소))
+        const sum = numbers.reduce((sigma, cur) => sigma + cur);
+        document.write(sum + '<br>');
+
+        // reduce((누적값, 현재 요소)) => 합, 초기값
+        const sum2 = numbers.reduce((sigma, cur) => sigma + cur, 100);
+        document.write(sum2 + '<br>');
+
+        // 있으면 참 _ arr.some()
+        function filter2(value, index, array) {
+            return value > 18;
+        }
+        document.write(numbers.some(filter2) + '<br>');
+
+        // 조건해당 값 _ arr.find() 
+        function filter3(value, index, array) {
+            return value > 18;
+        }
+        document.write(numbers.find(filter3) + '<br>');
+
+        // 조건해당 인덱스 값 _ arr.findIndex()
+        function filter4(value, index, array) {
+            return value > 18;
+        }
+        document.write(numbers.findIndex(filter4) + '<br>');
+
+        // 앞부터 검색
+        if (numbers.includes(4))
+            document.write(numbers.indexOf(4) + '<br>');
+
+        // 뒤부터 검색
+        if (numbers.includes(4))
+            document.write(numbers.lastIndexOf(4) + '<br>');
+
+        // 문자열 -> 배열
+        let strArr = Array.from("ABCDE");
+        document.write(`${strArr} isArray : ${Array.isArray(strArr)} <br>`);
+
+        // entries는 idx + prop 쌍
+        const fruitsArr = ["Banana", "Orange", "Apple", "Mango"];
+        const fruitsIter = fruitsArr.entries();
+        for (let x of fruitsIter) {
+            document.write(`${x} `);
+        }
+        document.write('<br>');
+
+        // Spread
+        const q1 = ["Jan", "Feb", "Mar"];
+        const q2 = ["Apr", "May", "Jun"];
+        const q3 = ["Jul", "Aug", "Sep"];
+        const q4 = ["Oct", "Nov", "May"];
+        const year = [...q1, ...q2, ...q3, ...q4];
+        year.forEach(i=> document.write(`${i} `));
+
+        document.write('<br><hr><br>');
+
+        // for .. in / for .. of
+        const lang = ['java','python','c'];
+        for (const l in lang){
+            document.write(`${l}. ${lang[l]} <br>`);
+        }
+        for (const l of lang){
+            document.write(`${l} <br>`);
+        }
+    </script>
+</body>
+
+</html>

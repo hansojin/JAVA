@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 300px;
+            margin-left: 20px;
+            margin-top : 10px;
+        }
+        #before{
+            margin-left:100px;
+        }
+        button{
+            margin: 50px 5px;
+            height: 30px;
+            width: 60px;
+            font-weight: bold;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id= 'img'><img src="pic_1.jpg"></div><br>
+    <button id="before" onclick="before()">before</button>
+    <button id="after" onclick="after()">after</button>
+    <script>
+        let cur = 0;
+        let pic = ['pic_1.jpg','pic_2.jpg','pic_3.jpg','pic_4.jpg','pic_5.jpg','pic_6.jpg','pic_7.jpg','pic_8.jpg','pic_9.jpg'];
+        
+        function before(){
+            if (cur!=0){
+                cur-=1;
+            }
+            let element = document.getElementById('img');
+            element.innerHTML = `<img src="${pic[cur]}">`;
+        }
+        
+        function after(){
+            if (cur!=pic.length-1){
+                cur+=1;
+            }
+            let element = document.getElementById('img');
+            element.innerHTML = `<img src="${pic[cur]}">`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Window 객체의 alert() 메소드</p>
+    <button onclick="alertDialogBox()">alert 대화 상자</button>
+    <script>
+        function alertDialogBox() {
+            alert("확인을 누를 때까지 다른 작업을 할 수 없어요!");
+        }
+    </script>
+    <br><br>
+    <hr>
+
+    <p>HTML DOM 요소를 이용한 innerHTML 프로퍼티</p>
+    <button id="inner" onclick="innerHtmlBtn()">getElement</button>
+    <script>
+        function innerHtmlBtn() {
+            var str = document.getElementById("inner");
+            str.innerHTML = "InnerHTML로 변경 가능";
+        }
+    </script>
+    <br><br>
+    <hr>
+
+    <p>Document 객체의 write() 메소드</p>
+    <script>
+        document.write(4 * 5)       // 20
+    </script>
+    <br>
+    <button onclick="document.write(4 * 5)">버튼을 눌러보세요!</button>
+    <br><br>
+    <hr>
+
+    <p>console.log() 메소드</p>
+    F12 개발자 도구에서 확인 가능
+    <script>
+        console.log(4 * 5);
+    </script>
+    <br><br>
+    <hr>
+
+    <p><strong>Math.random()</strong> returns a random number between 0 (included) and 1 (excluded):</p>
+    <p id="mathDemo"></p>
+    <script>
+        document.getElementById("mathDemo").innerHTML = Math.random();
+    </script>
+
+    <hr>
+
+    <p>CSS 선택자를 이용한 선택</p>
+    <p class="odd">첫 번째 단락이에요!</p>
+    <ul>
+        <li class="odd">첫 번째 아이템이에요!</li>
+        <li>두 번째 아이템이에요!</li>
+        <li class="odd">세 번째 아이템이에요!</li>
+        <li>네 번째 아이템이에요!</li>
+        <li class="odd">다섯 번째 아이템이에요!</li>
+    </ul>
+    <script>
+        var selectedItem = document.querySelectorAll("li.odd");	// 클래스가 "odd"인 요소 중에서 <li> 요소만을 선택함.
+        for (var i = 0; i < selectedItem.length; i++) {
+            selectedItem.item(i).style.color = "red";			// 선택된 모든 요소의 텍스트 색상을 변경함.
+        }
+    </script>
+</body>
+
+</html>

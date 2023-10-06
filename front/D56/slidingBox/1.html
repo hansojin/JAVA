@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            font-size: 400%;
+        }
+
+        div {
+            float: left;
+            font-size: 200%;
+            border: 1px solid black;
+            height: 40px;
+            width: 40px;
+            padding: 10px;
+            margin: 10px 0px;
+            text-align: center;
+            cursor:pointer;
+        }
+        #zero{
+            display:none;
+        }
+
+        button {
+            margin: 0 64px;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 400;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: auto;
+            border: none;
+            border-radius: 4px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <script>
+        function check(){
+            
+        }
+        function reset() {
+            function shuffle(array) {
+                array.sort(() => Math.random() - 0.5);
+            }
+            let nums = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+            shuffle(nums);
+
+            let numBox = "";
+            for (let i = 0; i < 9; i++) {
+                if (nums[i]==0){
+                    numBox += `<div id = "zero">${nums[i]}</div>`;
+                }
+                else{
+                    numBox += `<div id = "box">${nums[i]}</div>`;
+                }
+                if (i % 3 == 2)
+                    numBox += `<span><br></span>`;
+            }
+            document.getElementById("demo").innerHTML = numBox;
+        }
+
+        reset();
+    </script>
+    <button onclick="reset()">reset</button>
+</body>
+
+</html>

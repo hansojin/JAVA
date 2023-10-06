@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><strong>entries() method</strong>는 배열의 각 인덱스에 대한 키/값 쌍을 갖는 새로운 array iterator 객체를 반환</p>
+    <script>
+        const arr1 = ['a', 'b', 'c'];
+        const iter1 = arr1.entries();
+        document.write(iter1.next().value + "<br>");    // 0,a
+        document.write(iter1.next().value + "<br>");    // 1,b
+        document.write(iter1.next().value + "<br>");    // 2,c
+        document.write(iter1.next().value + "<br>");    // undefined
+        document.write("<br>");
+        
+        const arr2 = ['a', 'b', 'c'];
+        for (const [idx,prop] of arr2.entries()){
+            document.write(`${idx} ${prop} <br>`);
+        }
+        document.write("<br>");
+
+        var iter2 = arr2.entries();
+        for(let e of iter2){
+            document.write(e + "<br>");
+        }
+
+        var arr = [];		// 비어있는 배열을 생성함.
+		arr["하나"] = 1;	// 숫자 인덱스 대신에 문자열을 인덱스로 배열 요소를 추가함.
+		arr["참"] = true;
+		arr["자바스크립트"] = "JavaScript";
+
+		document.write(arr["참"] + "<br>");	    // true	
+		document.write(arr.length + "<br>");	// 0
+		document.write(arr[0]);					// undefined
+
+		document.write('<br><br>');
+		var str = "안녕하세요!";
+		document.write(str[2] + "<br>");         // 하
+
+		document.write('<br>');
+		var arr = [1, true, "JavaScript"];
+		document.write(typeof (arr) + "<br>");   // object
+		document.write(Array.isArray(arr) + "<br><br>");     // true
+
+		var x = 2;
+		// 0은 false로 취급
+		var result = x % 2 ? '홀수' : '짝수';
+		document.write(result); // 짝수
+
+    </script>
+
+
+</body>
+
+</html>

@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="calendar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Sedgwick+Ave+Display&family=Skranji&family=Titan+One&display=swap"
-        rel="stylesheet">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Sedgwick+Ave+Display&family=Skranji&family=Titan+One&display=swap" rel="stylesheet">
+    <title>Calendar</title>
     <style>
         * {
             font-family: 'Skranji', cursive;
@@ -124,9 +121,7 @@
         let curMonthFirstDay = curMonthFirst.getDay();
         let showMonthFirstDay = showMonthFirst.getDay();
         let curDate = now.getDate();
-        console.log(curDate);
 
-        // 윤년 계산
         function getLastDayofMonth() {
             let lastDayOfTheMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             let leapYear = false;
@@ -137,15 +132,20 @@
         }
         cal();
 
+        function dayCalculate(showYear,showMonth){
+            showMonthFirst= new Date(showYear, showMonth, 1);
+            showMonthFirstDay = showMonthFirst.getDay();
+            showLastDay =  getLastDayofMonth();
+            return showLastDay;
+        }
+
         function monthBf() {
             showMonth -= 1;
             if (showMonth == -1) {
                 showMonth = 11;
                 showYear -= 1;
             }
-            showMonthFirst= new Date(showYear, showMonth, 1);
-            showMonthFirstDay = showMonthFirst.getDay();
-            showLastDay = getLastDayofMonth();
+            showLastDay = dayCalculate(showYear,showMonth);
             cal();
         }
 
@@ -155,9 +155,7 @@
                 showMonth = 0;
                 showYear += 1;
             }
-            showMonthFirst= new Date(showYear, showMonth, 1);
-            showMonthFirstDay = showMonthFirst.getDay();
-            showLastDay = getLastDayofMonth();
+            showLastDay = dayCalculate(showYear,showMonth);
             cal();
         }
         function cal() {
@@ -191,6 +189,9 @@
                         }else{
                             table += `<td id = 'date'>${date++}</td>`;
                         }
+                    }
+                    else{
+                        table += `<td></td>`;
                     }
                 }
                 table += `</tr>`;
