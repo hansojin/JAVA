@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+    <title>Document</title>
+    <style>
+        
+        * {
+            font-family: 'Lilita One', cursive;
+            /* width: 960px; */
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        #alphaBtn {
+            height : 50px;
+            width: 50px;
+            margin : 30px 5px;
+            font-size: 3em;
+            background-color: white;
+            border : none;
+            cursor: pointer;
+        }
+
+        #alphaBtn[style*="red"],#alphaBtn[style*="blue"]  {
+            cursor: auto;
+        }
+        
+        #displayLeftChance{
+            text-align:right;
+            margin: 50px 10px 0 -10px;
+            margin-right:150px;
+            font-size: 2em;
+        }
+        #answerZone{
+            height: 300px;
+            width: 680px;
+            border : none;
+            margin: 50px auto;
+            z-index: 1;
+            background-color: #f4f4f4;
+            text-align: center;
+            line-height: 280px;
+            font-size: 5em;
+            letter-spacing: 10px;
+            border-radius: 30px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <p id='displayLeftChance'></p>
+    <p id = 'answerZone'></p>
+    <p id = 'alpha'></p>
+    
+    <script>
+        var chance,display,ans,ansLen;
+        var MODE=5;
+
+        function wordInit() {
+            chance = [];
+            display = [];
+            let word_list = ['APPLE', 'BANANA', 'JAM', 'ORANGE', 'LEMON', 'CHERRY', 'GRAPE', 'MANGO', 'KIWI', 
+            'PEACH','PLUM', 'FIG', 'GUAVA', 'PEAR', 'LIME', 'BERRY', 'MELON', 'OLIVE', 'CARROT', 'TOMATO'
+            ];
+            wordNum = Math.floor((Math.random() * (word_list.length)));
+            ans = word_list[wordNum];
+            ansLen = ans.length;
+        }
+        
+
+        function alphabetDisplay(){
+            const alpha = Array.from({ length: 26 }, (v, i) => String.fromCharCode(i + 65));
+            alphaText="";
+            for (var a of alpha){
+                alphaText += `<button id="alphaBtn" onclick="alphaClicked(this,'${a}')">${a}</button>`;
+                if (a=='L'){
+                    alphaText+='<br>';
+                }
+            }
+            document.getElementById('alpha').innerHTML = alphaText;
+        }
+        
+        function alphaClicked(button,alphabet){
+            let isAlphaInWord = false;
+            for (let i=0;i<ansLen;i++){
+                if (ans[i]==alphabet){
+                    isAlphaInWord=true;
+                    display[i]=alphabet;
+                }
+            }
+            if (isAlphaInWord){
+                button.style.color = 'blue';
+                answerDisplay();
+                checkWin();
+            }
+            else{
+                button.style.color = 'red';
+                loseChance();
+            }
+
+        }
+
+        function chanceInit(){
+            chance=[];
+            for (var i=0;i<MODE;i++){
+                chance.push('🧡');
+            }
+            chanceDisplay();
+        }
+        
+        function loseChance(){
+            chance.unshift('🖤');
+            checkChance();
+            chanceDisplay();
+        }
+
+        function chanceDisplay(){
+            if (MODE==5){
+                document.getElementById('displayLeftChance').innerHTML=chance.slice(0,MODE).join(" ");
+            }else{
+                var displayText = chance.slice(0, 5).join(" ") + "<br>" + chance.slice(5,10).join(" ");
+                document.getElementById('displayLeftChance').innerHTML = displayText;
+            }
+        }
+
+        function checkChance(){
+            if (chance.length==MODE*2){
+                loseMessage();
+            }
+        }
+        function answerInit(){
+            display=[];
+            for (var i =0;i<ansLen;i++){
+                display.push('_');
+            }
+            answerDisplay();
+        }
+
+        function answerDisplay(){
+            document.getElementById('answerZone').innerHTML = display.join(" ");
+        }
+
+        function checkWin(){
+            if (display.join("")== ans){
+                answerDisplay();
+                setTimeout(() => winMessage(), 200);
+            }
+            
+        }
+        function winMessage(){
+            swal({
+                title: "You GOT it",
+                text: "RESTART GAME?",
+                icon: "success",
+                showCancelButton: true,
+                confirmButtonColor: "#C4DFDF",
+                cancelButtonText : "#C4DFDF",
+                confirmButtonText: "cancel",
+                cancelButtonText: "RESTART",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm){
+                    swal("EXIT");
+                    window.close();
+                }else{
+                    init();
+                }
+            }        
+            ); 
+        }
+
+        function loseMessage(){
+            swal({
+                title: "The answer was " + ans,
+                text: "RESTART GAME?",
+                icon: "error",
+                showCancelButton: true,
+                confirmButtonColor: "#C4DFDF",
+                cancelButtonText : "#C4DFDF",
+                confirmButtonText: "cancel",
+                cancelButtonText: "RESTART",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm){
+                    window.close();
+                }else{
+                    init();
+                }
+            }        
+            ); 
+        }
+
+        function chooseMode(){
+            swal({
+                title: "MODE",
+                showCancelButton: true,
+                confirmButtonColor: "#C4DFDF",
+                confirmButtonText: "HARD",
+                cancelButtonText: "EASY",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm){
+                    swal('HARD MODE', '', "success");
+                    init();
+                }else{
+                    MODE +=5;
+                    swal('EASY MODE', '', "success");
+                    init();
+                }
+            }        
+            ); 
+        }
+
+        function init(){
+            wordInit();
+            alphabetDisplay();
+            chanceInit();
+            answerInit();
+        }
+
+        window.onload = chooseMode(); 
+    </script>
+</body>
+
+</html>

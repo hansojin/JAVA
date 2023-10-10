@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Click the button to see line-breaks in a <strong>confirm</strong> box.</p>
+    <p>
+        The confirm() method displays a dialog box with a message, an <b>OK button</b>, and a <b>Cancel button</b>.<br>
+        The confirm() method <b>returns true</b> if the user clicked "OK", <b>otherwise false</b>.
+    </p>
+    <button onclick="myFunction()">Try it</button>
+    <p id="confirmFlag"></p>
+
+    <script>
+        function myFunction() {
+            let text = "Press a button!\nEither OK or Cancel.";
+            if (confirm(text) == true) {
+                text = "You pressed OK!";
+            } else {
+                text = "You canceled!";
+            }
+            document.getElementById("confirmFlag").innerHTML = text;
+        }
+    </script>
+
+    <br><hr><br>
+
+    <button onclick="location.href='http://www.naver.com'">Naver</button>
+
+    <br><br><hr><br>
+
+    <p><b>indexOf()</b> returns the position of the first occurrence of a value in a string. It returns -1 if it doesn't
+        exist.</p>
+    <p>Find "welcome" in "Hello world, welcome to the universe."</p>
+    <p id="indexOfDemo"></p>
+
+    <script>
+        let text = "Hello world, welcome to the universe.";
+        let result = text.indexOf("welcome");
+
+        document.getElementById("indexOfDemo").innerHTML = result;
+    </script>
+
+    <br><hr><br>
+
+    <input type="button" onclick="getName()" value="이름 가져오기">
+    <input type="text" id="name" placeholder="Enter your name">
+    <p id="getNameDemo"></p>
+    <script>
+        function getName() {
+            let name = document.getElementById("name").value;
+            document.getElementById("getNameDemo").innerHTML = name;
+        }
+    </script>
+
+    <script>
+        // let name = prompt("당신의 이름은?");
+        let name = prompt("당신의 이름은?", "placeholder");  
+        alert("welcome " + name);
+    </script>
+
+    <br><hr><br>
+
+    <p><b>join()</b> returns an array as a string:</p>
+    <p id="joinDemo"></p>
+    <script>
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("joinDemo").innerHTML = fruits.join();
+        document.getElementById("joinDemo").innerHTML += fruits.join(" and ");
+    </script>
+
+    <br><hr><br>
+    <p><b>split()</b> splits a string into an array of substrings, and returns the array:</p>
+    <p id="splitDemo"></p>
+    
+    <script>
+        let splitText = "How are you doing today?";
+        // const myArray = splitText.split(" ");
+        // document.getElementById("splitDemo").innerHTML = myArray;   // How,are,you,doing,today?
+        // const myArray = splitText.split("");
+        // document.getElementById("splitDemo").innerHTML = myArray;   // H,o,w, ,a,r,e, ,y,o,u, ,d,o,i,n,g, ,t,o,d,a,y,?
+        // const myArray = splitText.split(" ", 3);
+        // document.getElementById("splitDemo").innerHTML = myArray;   // How,are,you
+        // const myArray = splitText.split("o");
+        // document.getElementById("splitDemo").innerHTML = myArray;   // H,w are y,u d,ing t,day?
+        const myArray = splitText.split();  // 문자열을 전체를 하나의 배열로 만들기
+        document.getElementById("splitDemo").innerHTML = myArray;   // How are you doing today?
+    </script>
+
+
+</body>
+
+</html>
