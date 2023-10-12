@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>check F12</p>
+    <script>        
+    // EX1
+    function callThreeTimes (callback) {
+        for (let i = 0; i < 3; i++) {
+          callback(i)
+        }
+    }
+    function print (i) {
+        console.log(`${i}번째 함수 호출`)
+    }
+    callThreeTimes(print)
+
+    // EX1에 익명함수 사용
+    callThreeTimes(function(i){
+        console.log(`${i}번째 함수 호출`)
+    })
+
+    // 콜백 함수 형태 : function(value, index, array){}  
+    // call back을 활용하는 가장 기본적인 함수 
+    // forEach() 메소드
+    const num=[273, 52, 103, 32, 57]
+    num.forEach(function(value,index,array){
+        console.log(`${index}번째 요소 : ${value}`)
+    })
+
+    // 사용하고자 하는 위치의 것만 순서에 맞춰 입력하여 사용 가능
+    num.forEach(function(value,index){
+        console.log(`${index}번째 요소 : ${value}`)
+    })
+
+    // map() 함수 
+    nums = num.map(function (value,index,array){
+        console.log(value);
+    })
+    nums = num.map(function (value){
+        console.log(value);
+    })
+
+    // call back을 활용하는 함수 
+    // filter() 메소드
+    const evenNum = num.filter(function(i){
+        // value만 활용하므로 value만 매개변수로 넣음
+        return i%2===0
+    })
+    console.log(evenNum)
+
+    // 메소드 체이닝(method chaining)
+    // : 어떤 메소드가 리턴하는 값을 기반으로 해서 함수를 줄줄이 사용하는 기법
+    let num2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    num2.filter((value) => value % 2 == 0)
+        .map((value) => value * value)
+        .forEach((value) => console.log(value)) // 0 4 16 36 64
+
+    /*
+    타이머 함수
+        setTimeout(함수, 시간)    특정 시간 후에 함수를 한 번 호출
+        setInterval(함수, 시간)   특정 시간마다 함수를 호출
+        clearTimeout(타이머_ID)   setTimeout() 함수로 설정한 타이머를 제거
+        clearInterval(타이머_ID)  setInterval() 함수로 설정한 타이머를 제거
+            타이머 ID : 위 두개의 setXXX 함수를 호출할 때 리턴 값으로 나오는 숫자
+    */
+
+    // 타이머 Set 함수
+    let count = 0;
+    function func1(){
+        console.log(`1초 후에 실행됩니다.`);
+    }
+    function func2(){
+        console.log(`1초마다 실행됩니다.(${count}번째)`);
+        count++;      
+    }
+    setTimeout(func1, 1 * 1000);      
+    setInterval(func2, 1 * 1000);
+
+    // 위 예제에 익명 함수 사용
+    setTimeout(function (){
+        console.log(`1초 후에 실행됩니다.`);
+    }, 1 * 1000);      
+    setInterval(function (){
+        console.log(`1초마다 실행됩니다.(${count}번째)`);
+        count++;      
+    }, 1 * 1000);
+
+    // 익명함수에 화살표 함수까지 적용
+    setTimeout(()=>{
+        console.log(`1초 후에 실행됩니다.`);
+    }, 1 * 1000);  
+    setInterval(()=>{
+        console.log(`1초마다 실행됩니다.(${count}번째)`);
+        count++;      
+    }, 1 * 1000);
+
+    
+    // 타이머 close 함수
+    let id
+    let count2 = 0
+    id = setTimeout(()=>{
+            console.log(`1초 후에 실행됩니다.`);
+        }, 1 * 1000); 
+    setTimeout(()=>{
+        console.log("타이머 종료")
+        clearTimeout(id)
+    } , 5*1000)
+
+    // 새도잉(shadowing)
+    // 블록이 다른 경우 내부 변수가 외부 변수를 가리는 현상을 
+    let pi = 3.14
+    console.log(`파이 값은 ${pi}입니다.`)   // 3.14
+    
+    {   // 블록을 사용한 스코프 생성.
+        let pi = 3.141592
+        console.log(`파이 값은 ${pi}입니다.`)   // 3.141592
+    }
+
+    // 함수 블록을 사용한 스코프 생성
+    function PiTest() {
+        let pi = 3.141592
+        console.log(`파이 값은 ${pi}입니다`)    // 3.141592
+    }
+    PiTest()
+    console.log(`파이 값은 ${pi}입니다.`)   // 3.14
+
+    // 함수 즉시 호출하기 (구버전JS에서 자주 사용)
+    // (function (){})()
+    (function () {
+        let pi = 3.141592
+        console.log(`파이 값은 ${pi}입니다.`)
+    })()
+
+
+    // forEachTest1
+    const fruits = ["apple", "orange", "cherry"];
+    fruits.forEach(myFunction);
+    function myFunction(item, index) {
+        console.log(item + " " + index)
+    }
+
+    //forEachTest2
+    let sum = 0;
+    const numbers = [65, 44, 12, 4];
+    numbers.forEach((i)=>sum+=i)
+    console.log(sum)
+
+    //forEachTest3
+    numbers.forEach((item,index,arr) => {
+        arr[index] = item*10
+    })
+    console.log(numbers)
+    </script>
+
+</body>
+</html>

@@ -6,14 +6,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+    <title>HangMan</title>
     <style>
         
         * {
             font-family: 'Lilita One', cursive;
-            /* width: 960px; */
             margin: 0 auto;
             text-align: center;
         }
@@ -28,7 +27,7 @@
             cursor: pointer;
         }
 
-        #alphaBtn[style*="red"],#alphaBtn[style*="blue"]  {
+        #alphaBtn[style*="white"]  {
             cursor: auto;
         }
         
@@ -39,6 +38,7 @@
             font-size: 2em;
         }
         #answerZone{
+            display:none;
             height: 300px;
             width: 680px;
             border : none;
@@ -68,8 +68,7 @@
             chance = [];
             display = [];
             let word_list = ['APPLE', 'BANANA', 'JAM', 'ORANGE', 'LEMON', 'CHERRY', 'GRAPE', 'MANGO', 'KIWI', 
-            'PEACH','PLUM', 'FIG', 'GUAVA', 'PEAR', 'LIME', 'BERRY', 'MELON', 'OLIVE', 'CARROT', 'TOMATO'
-            ];
+            'PEACH','PLUM', 'FIG', 'GUAVA', 'PEAR', 'LIME', 'BERRY', 'MELON', 'OLIVE', 'CARROT', 'TOMATO'];
             wordNum = Math.floor((Math.random() * (word_list.length)));
             ans = word_list[wordNum];
             ansLen = ans.length;
@@ -97,12 +96,12 @@
                 }
             }
             if (isAlphaInWord){
-                button.style.color = 'blue';
+                button.style.color = 'white';
                 answerDisplay();
                 checkWin();
             }
             else{
-                button.style.color = 'red';
+                button.style.color = 'white';
                 loseChance();
             }
 
@@ -136,6 +135,7 @@
                 loseMessage();
             }
         }
+        
         function answerInit(){
             display=[];
             for (var i =0;i<ansLen;i++){
@@ -155,71 +155,58 @@
             }
             
         }
-        function winMessage(){
-            swal({
-                title: "You GOT it",
-                text: "RESTART GAME?",
-                icon: "success",
+
+        function message(title,text,icon){
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
                 showCancelButton: true,
                 confirmButtonColor: "#C4DFDF",
-                cancelButtonText : "#C4DFDF",
-                confirmButtonText: "cancel",
-                cancelButtonText: "RESTART",
+                cancelButtonColor : "#C4DFDF",
+                confirmButtonText: "RESTART",
+                cancelButtonText: "cancel",
                 closeOnConfirm: false,
                 closeOnCancel: true
-            }, function (isConfirm) {
-                if (isConfirm){
-                    swal("EXIT");
-                    window.close();
-                }else{
+            }).then(result => { 
+                if (result.isConfirmed) { 
                     init();
+                }else{
+                    window.close();
                 }
-            }        
-            ); 
+            });
+        }
+
+
+        function winMessage(){
+            message("You GOT it","RESTART GAME?","success");
         }
 
         function loseMessage(){
-            swal({
-                title: "The answer was " + ans,
-                text: "RESTART GAME?",
-                icon: "error",
-                showCancelButton: true,
-                confirmButtonColor: "#C4DFDF",
-                cancelButtonText : "#C4DFDF",
-                confirmButtonText: "cancel",
-                cancelButtonText: "RESTART",
-                closeOnConfirm: false,
-                closeOnCancel: true
-            }, function (isConfirm) {
-                if (isConfirm){
-                    window.close();
-                }else{
-                    init();
-                }
-            }        
-            ); 
+            message("The answer was " + ans, "RESTART GAME?","error");
         }
 
         function chooseMode(){
-            swal({
+            Swal.fire({
                 title: "MODE",
+                text: "",
                 showCancelButton: true,
                 confirmButtonColor: "#C4DFDF",
+                cancelButtonColor: "#C4DFDF",
                 confirmButtonText: "HARD",
                 cancelButtonText: "EASY",
                 closeOnConfirm: false,
                 closeOnCancel: true
-            }, function (isConfirm) {
-                if (isConfirm){
-                    swal('HARD MODE', '', "success");
+            }).then(result => {
+                if (result.isConfirmed) { 
+                    Swal.fire('HARD MODE', '', "success");
                     init();
                 }else{
-                    MODE +=5;
-                    swal('EASY MODE', '', "success");
+                    Swal.fire('EASY MODE', '', "success");
+                    MODE+=5;
                     init();
                 }
-            }        
-            ); 
+            });
         }
 
         function init(){
@@ -227,6 +214,7 @@
             alphabetDisplay();
             chanceInit();
             answerInit();
+            document.getElementById("answerZone").style.display= 'block';
         }
 
         window.onload = chooseMode(); 

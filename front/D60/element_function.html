@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="thisID" onclick="thisTest(this);" value="thsiValue">click me</button>
+    <script>
+        function thisTest(obj){
+            console.log(obj);       // 태그 내용 출력 _ HTML 형태의 트리 구조 출력  
+            // <button id="thisID" onclick="thisTest(this);" value="thsiValue">
+            console.dir(obj);       // 태그 속성 출력 _ JSON 형태의 트리 구조 출력 
+            console.log(obj.id);
+            console.log(obj.value);
+            console.log(obj.innerText);
+            console.log(obj.tagName);
+            obj.innerText = "clicked";
+        }
+    </script>
+
+    <!-- 
+        Javascript에서 DOM의 특정 요소(element)를 찾는 방법
+ 
+        1. getElementById()
+        2. getElementsByClassName()
+        3. getElementByTagName()
+        4. querySelector()
+        5. querySelectorAll()
+     -->
+
+    <div id="elementTest" class = "elementClass"> Element Test </div>
+    <div id="elementTest2" class = "elementClass"> Element Test2 </div>
+    <div id="elementTest2" class = "elementClass2"> Element Test3 </div>
+    <button id="getElementByIdID" onclick="getByID();" value="getElementByIdValue">click me</button>
+    <script>
+        function getByID() {
+            const elementTest = document.getElementById('elementTest');
+            alert(elementTest.innerText);
+        }
+    </script>
+
+    <button id="getElementByClassNameID" onclick="getByClassName();" value="getElementByClassNameValue">click me</button>
+    <br><br>
+    <script>
+        function getByClassName() {
+            const element_list = document.getElementsByClassName('elementClass');
+            // alert(element_list.length);      // 2
+            for (let i = 0; i < element_list.length; i++) {
+                console.log(element_list[i].innerText);
+                // <div id="elementTest2" class="elementClass"> + 전체 속성 출력
+                // 찾은 여러개의 element 중 첫번째 element를 리턴
+            }
+        }
+    </script>
+    
+    <div id='color1' class='red blue yellow'>
+        red blue yellow
+    </div>
+    <div id='color2' class='green blue red'>
+        green blue red
+    </div>
+    <div id='color3' class='yellow green red'>
+        yellow green red
+    </div>
+    <input type="button" id="getColorByClassNameID" onclick="getColorByClassName();" value="click me" />
+    <script>
+        function getColorByClassName(){
+            const color_list = document.getElementsByClassName('red blue');
+            console.log(color_list.length);     // 2
+            for (let i=0;i<color_list.length;i++){
+                console.log(color_list[i].innerText);
+                // red blue yellow
+                // green blue red 
+                //클래스 이름에 'red'와 'blue' 모두를 포함하는 element를 찾아 출력
+            }
+        }
+    </script>
+
+    <br><br>
+    <input type="button" id="getElementsByTagNameID" onclick="getElementsByTagNameFunction();" value="click me" />
+    <script>
+        function getElementsByTagNameFunction(){
+            const inputTag_list = document.getElementsByTagName('input');
+            for (let i=0;i<inputTag_list.length;i++){
+                console.log(inputTag_list[i].id);
+            }
+        }
+    </script>
+
+    <br><br>
+    <button id="querySelectorID" onclick="querySelectorFunction();" value="querySelectorValue">click me</button>
+    <button id="querySelector2ID" onclick="querySelector2Function();" value="querySelector2Value">click me</button>
+    <button id="querySelector3ID" onclick="querySelector3Function();" value="querySelector3Value">click me</button>
+
+    <script>
+        function querySelectorFunction(){
+            const elementTestTwo = document.querySelector('#elementTest2');
+            console.log(elementTestTwo);
+            // 찾은 여러개의 element 중 첫번째 element를 리턴
+            // <div id="elementTest2" class="elementClass">
+        }
+        function querySelector2Function(){
+            const elementTest2Two = document.querySelector('.elementClass');
+            console.log(elementTest2Two);
+            const elementTest22Two = document.querySelector('.red', '.blue');
+            console.log(elementTest22Two);
+            // 선택자를 ','로 구분하여 전달하면 여러개의 선택자 중 첫번째로 발견되는 element를 리턴
+        }
+        function querySelector3Function(){
+            const elementTest3Two = document.querySelector('div');
+            // Tag 이름으로 element를 찾을 때는 태그명을 문자열로 넘겨줌
+            console.log(elementTest3Two);
+        }
+    </script>
+
+    <br><br>
+    <button id="querySelectorAllID" onclick="querySelectorAllFunction();" value="querySelectorAllValue">click me</button>
+    <script>
+        function querySelectorAllFunction(){
+            const elementAll = document.querySelectorAll('#elementTest2');
+            console.log(elementAll);
+            /*
+                찾은 모든 element목록을 리턴
+                NodeList [ div#elementTest2.elementClass, div#elementTest2.elementClass2 ]
+                    0: <div id="elementTest2" class="elementClass">
+                    1: <div id="elementTest2" class="elementClass2">
+                    length: 2
+            */
+            
+            // querySelectorAll은 querySelector와 마찬가지로
+            // .class #id tag는 그냥 태그명으로 문자열을 검색
+        }
+    </script>
+
+    <br><br>
+    <input type="button" id="night_day" value="night" onclick="
+        if(document.querySelector('#night_day').value === 'day'){
+            document.querySelector('body').style.backgroundColor = 'white';
+            // document.querySelector('body').style.color = 'black';
+            this.style.color = 'black';
+            this.value = 'night';
+        }
+        else{
+            document.querySelector('body').style.backgroundColor = 'black';
+            document.querySelector('body').style.color = 'white';
+            this.value = 'day';
+        }
+    ">
+
+    <br><hr>
+    <p> <strong>page</strong> </p>
+    <input type="button" value="replace" onclick="javascript:location.replace('http://www.naver.com');">
+    <input type="button" value="assign" onclick="javascript:location.assign('http://www.naver.com');">
+    <!-- 
+        repalce : 현재 페이지가 session history에 저장 되지 않음 
+                : 즉, back 을 눌러도 이전 페이지로 이동 할 수 없음
+     -->
+
+    <br><br>
+    <button onclick="openDocument()">새로운 문서 열기</button>
+    <p id="text"></p>
+    <script>
+        function openDocument() {
+            location.assign("getElementBy.html");
+        }
+        document.getElementById("text").innerHTML = "현재 브라우저의 히스토리 목록의 갯수 : " + history.length;
+    </script>
+
+    <br>
+    <button onclick="goBack()">이전 페이지로 가기 back</button>
+    <button onclick="go()">이전 페이지로 가기 go</button>
+    <button onclick="goForward()">다음 페이지로 가기</button>
+    <button onclick="lochref()">특정 페이지로 이동</button>
+    <button id = 'listenerBtn'>특정 페이지로 이동</button>
+    <a href="http://www.naver.com">네이버</a><br><br>
+    <script>
+        function goBack() {    
+            window.history.back();    
+        }
+        function go() {
+            window.history.go(-1);
+            // history.go(-1);
+        } 
+        function goForward() {
+            window.history.forward();
+        }    
+        function lochref(){
+            location.href="callBack.html";
+        }
+        
+        var handlerBtn = document.getElementById('listenerBtn');
+        handlerBtn.addEventListener('click', event => location.href="callBack.html")
+    </script>
+
+    <input type="button" id="target" value="listenerButton">
+    <script>
+        let listener = document.getElementById('target');
+        listener.addEventListener('click', (e)=> {
+            console.log(e)
+            console.log(e.target.value)
+        })
+    </script>
+
+    <input type="button" id="target2" value="listenerButton2">
+    <script>
+        let listener2 = document.getElementById('target2');
+        listener2.addEventListener('click', (e)=> console.log(1))
+        listener2.addEventListener('click', (e)=> console.log(2))
+        // 하나의 이벤트 대상에 복수의 동일 이벤트 타입 리스너를 등록할 수 있음
+
+        function btnListener(event){
+            switch(event.target.id){
+                case 'target':
+                    console.log("one")
+                    break
+                case 'target2':
+                console.log("two")
+                    break
+            }
+        }
+        listener.addEventListener('click',btnListener);
+        listener2.addEventListener('click',btnListener);
+    </script>
+
+    <!--  JS event 종류
+        click, dblclick, mouseover, mouseout, mousedown, mouseup, mousemove
+        focus, blur, keypress, keydown, keyup, load, resize, unload, change
+     -->
+    
+    <br><hr>
+    <p><strong>function</strong></p>
+    <button onclick="test1()">click me</button>
+    <script>
+        const fx = function (n, m) {
+            console.log(n + " " + m);
+        }
+        function test1() {
+            fx();           // undefined undefined
+            fx(10);         // 10 undefined
+            fx(10, 20);      // 10 20
+            fx(10, 20, 30);         //
+            fx(10, 20, 30, 40);     //
+            fx(10, 20, 30, 40, 50); //
+            console.log(typeof fx); // function
+            console.log(fx);        // function fx(n, m) ....  속성 출력
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test2()">click me</button>
+    <script>
+        const fx2 = function () {
+            console.log('1');
+            console.log('2');
+            console.log('3');
+        }
+        function test2() {
+            fx2();      // 1\n2\n3\n
+            fx2();      // 1\n2\n3\n 
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test3()">click me</button>
+    <script>
+        function fx3(x){
+            return x*x;
+        }
+        const fx33 = x => x*x;
+
+        function test3() {
+            console.log(fx3(3));
+            console.log(fx33(3));
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test4()">click me</button>
+    <script>
+        function min(arr){
+            let tmp = arr[0];
+            for (const i of arr){
+                if (i<tmp){
+                    tmp=i;
+                }
+            }
+            return tmp
+        }
+        const minArray = [52, 273, 32, 103, 275, 24, 57];
+        function test4() {
+            console.log(min(minArray));
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test5()">click me</button>
+    <script>
+        function fx5(...items){
+            // 가변 매개변수 함수
+            console.log(items);
+        }
+        
+        function test5() {
+            fx5();             // Array []
+            fx5(10);           // Array [ 10 ]
+            fx5(10, 20);       // Array [ 10, 20 ]
+            fx5(10, 20, 30);   // Array(3) [ 10, 20, 30 ]         
+           
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test6()">click me</button>
+    <script>
+        function fx6(a,b, ...c){
+            console.log(a,b,c);
+        }
+        
+        function test6() {
+            fx6();               // undefined undefined Array []
+            fx6(10);             // 10 undefined Array []
+            fx6(10, 20);         // 10 20 Array []
+            fx6(10, 20, 30);     // 10 20 Array [ 30 ]  
+            fx6(10, 20, 30, 40); // 10 20 Array [ 30, 40 ]
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test7()">click me</button>
+    <script>
+        function min2(first, ...rests){
+
+            let output, items
+            console.log(typeof first);  // object
+            if (Array.isArray(first)){  // for check if it's Array
+                output = first[0]
+                items = first
+            } 
+            else if (typeof(first)==='number'){
+                output= first   // 52
+                items = rests   // Array(6) [ 273, 32, 103, 275, 24, 57 ]
+            }
+
+            for (const i of items){
+                if (output>i){
+                    output=i;
+                }
+            }
+            return output;
+        }
+        function test7() {
+            console.log(`min(배열): ${min2([52,273,32,103,275,24,57])}`);
+            console.log(`min(숫자, ...): ${min2(52,273,32,103,275,24,57)}`)
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test8()">click me</button>
+    <script>
+        function fx8(...items){
+            console.log(items);
+        }
+        
+        function test8() {
+            const arrEight = [1,2,3,4];
+            fx8(arrEight);      
+            /* Array [ (4) […] ]
+                0: Array(4) [ 1, 2, 3, … ]
+                length: 1   */
+
+            fx8(...arrEight);  
+            /* Array [ (4) […] ]
+                Array(4) [ 1, 2, 3, 4 ]
+                0 : 1
+                ...
+                3 : 4
+                length: 4      */
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test9()">click me</button>
+    <script>
+        function fx9(name, wage = 8590, hours = 40){
+            console.log(`# ${name} 님의 급여 정보`)
+            console.log(`- 시급: ${wage}원`)
+            console.log(`- 근무 시간: ${hours}시간`)
+            console.log(`- 급여: ${wage * hours}원`)
+            console.log('')
+
+            /* 구 버전 JS
+            function fx9(wage, hours){
+                wage = wage || 8590;
+                hours = hours || 52;
+                return wage * hours;
+            }
+
+            function fx9(wage, hours){
+                wage = typeof(wage) != undefined ? wage : 8590;
+                hours = typeof(hours) != undefined ? hours : 52;
+                return wage * hours;
+            }                       */
+        }
+  
+        function test9() {
+            fx9('Hong')
+            fx9('Gil',1000)
+            fx9('Dong',2000,52)
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test10()">click me</button>
+    <script>
+        function fx10(){
+            console.log(arguments + " " + arguments.length)  
+        }
+        
+        function test10() {
+            fx10(1, 2)          // Arguments { 0: 1, 1: 2, … } 2
+            fx10(1, 2, 3)       // Arguments { 0: 1, 1: 2, 2: 3, … } 3 
+        }
+    </script>
+    <br><br>
+
+    <button onclick="test11()">click me</button>
+    <script>
+        const q1 = () => console.log("HI");
+        const q2 = (n,m)=> console.log(n+m);
+        const q3 = (n,m) => {
+            let s=0
+            for (let i=n;i<=m;i++){
+                s+=i;
+            }
+            console.log(s)
+        }
+        const q4 = (arr) => {
+            for (const i of arr){
+                console.log (i*2)
+            }
+        }
+        const q5 = (arr) => console.log(arr.map(x=>x*2));
+        function test11() {
+            q1();
+            q2(2,3);
+            q3(1,5);
+            let arr = [1,2,3]
+            q4(arr);
+            q5(arr);
+        }
+    </script>
+
+    <br><hr>
+    <p>more over ...</p>
+
+    <input type="text" id="myName" placeholder="Enter name">
+    <input type="button" id="clickBtn" value="Click Me" onclick="hi();"><br><br>
+    <script>
+        function hi(){
+            let name = document.getElementById('myName');
+            alert("welcome " + name.value)
+        }
+    </script>
+
+    <input type="radio" name="subject" value="HTML">HTML<br>
+    <input type="radio" name="subject" value="CSS">CSS<br>
+    <input type="radio" name="subject" value="JavaScript">JavaScript<br>
+    <input type="button" value="submit" onclick="submitSubject()"><br><br>
+    <script>
+        function submitSubject(){
+            let arrRadio = document.getElementsByName("subject");
+            for (let i =0;i<arrRadio.length;i++){
+                if (arrRadio[i].checked)
+                    alert(arrRadio[i].value + " checked")
+            }
+        }
+    </script>
+
+    <input type="radio" name="fgColor" value="yellow" onclick="changeFg(this.value)">노란색<br>
+    <input type="radio" name="fgColor" value="green" onclick="changeFg(this.value)">초록색<br> 
+    <input type="radio" name="fgColor" value="blue" onclick="changeFg(this.value)">파란색<br>
+    <input type="radio" name="fgColor" value="red" onclick="changeFg(this.value)">빨간색<br>
+    <input type="radio" name="fgColor" value="black" onclick="changeFg(this.value)">검정색<br><br>
+    <script>
+        function changeFg(color){
+            document.fgColor = color;
+        }
+    </script>
+
+    <input type="checkbox" name="country" value="미국"/>미국    
+    <input type="checkbox" name="country" value="캐나다"/>캐나다    
+    <input type="checkbox" name="country" value="프랑스"/>프랑스    
+    <input type="checkbox" name="country" value="독일"/>독일
+    <input type="button" value="답변하기" onclick="report()"><br>
+    <script>
+        function report(){
+            let country_list = "you just choose " + '\n';
+            let countries = document.getElementsByName('country');
+            for (let i=0;i<countries.length;i++){
+                if (countries[i].checked)
+                    country_list+= " - " + countries[i].value + '\n';
+            }
+            alert(country_list)
+        }
+    </script>
+    <br><hr>
+
+    <p><strong>create append insert remove replace</strong></p>
+
+    <!-- createElement , appendChild -->
+    <button onclick="appendBtn()">Create Button</button>
+    <script>
+        function appendBtn(){
+            let btn = document.createElement("button");
+            btn.innerHTML = "Click me";
+            document.body.appendChild(btn);
+        }
+    </script>
+
+    <!-- 부모노드.insertBefore(삽입할 노드, 기준점) --><br>
+    <div id="a">
+        <p id = "b">  -- baseline -- </p>
+    </div>
+    <button onclick="insertBf()">Create Button</button>
+    <script>
+        function insertBf(){
+            let btn = document.createElement('button');
+            let element = document.getElementById('a');
+            let child = document.getElementById('b');
+
+            btn.innerHTML = "click me";
+            element.insertBefore(btn,child);
+        }
+    </script>
+
+    <!-- 부모노드.removeChild(자식노드) --><br><br>
+    <div id="par_div">
+        <div id="child_div1">첫번째 div</div>
+        <div id="child_div2">두번째 div</div>
+        <div id="child_div3">세번째 div</div>
+        <button onclick="removeBtn()">Remove Button</button>
+    </div>
+    <script>
+        function removeBtn(){
+            var parent = document.getElementById("par_div");
+            var child = document.getElementById("child_div2");
+
+            parent.removeChild(child);
+            if (child.parentNode) {
+                child.parentNode.removeChild(child);
+                // 없는 요소 삭제시 에러 발생 -> if문으로 존재확인 먼저
+            }
+        }
+    </script>
+
+    <!-- 부모노드.replaceChild(교체할 노드, 기준점) --><br><br>
+    <div id="c">hi</div>
+    <div id="d">world</div>
+    <button onclick="replaceBtn()">Replace Button</button>
+    <script>
+        function replaceBtn(){
+            var divC = document.getElementById('c');
+            var newSpan = document.createElement('span');
+            newSpan.textContent = "hello";
+            divC.parentNode.replaceChild(newSpan,divC);
+        }
+    </script>
+</body>
+</html>
