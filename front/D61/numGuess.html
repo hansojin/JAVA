@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            margin-left: 10px;
+        }
+        #alert{
+            font-size : 1.5em;
+            font-weight: bold;
+        }
+        #reset{
+            display:none;
+            height : 40px;
+            width: 90px;
+            font-weight: bold;
+            font-size : 1.2em;
+            margin: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Number guessing game</h2>
+    <p>We have selected a random number between 1-100 <br>
+    See if you can guess it in 10 turns or less <br>
+    We'll tell you if your guess was too high or too low</p>
+    
+    <label for = "guessText"><b>Enter num </b></label>
+    <input type= "text" id = "guessText">
+    <button id = "guessInput" onclick="guess()">submit</button><br><br>
+    <div id = "previous"></div><br>
+    <div id = "alert" ></div><br>
+    <div id = "desc""></div>
+    <button id = 'reset' onclick="reset()"">RESET</button>
+
+    <script>
+        let randomNumber =0;
+        let inputNumber = document.getElementById('guessText');
+        let cnt=10;
+        let previousNum = "";
+
+        function numberInit(){
+            randomNumber = Math.floor(Math.random()*100)+1;
+            console.log(randomNumber);
+        }
+
+        function alertMsg(msg, bgColor,color){
+            document.getElementById('alert').innerText = msg;
+            document.getElementById('alert').style.backgroundColor = bgColor;
+            document.getElementById('alert').style.color = color;
+        }
+
+        function guess(){
+            let guessNum = inputNumber.value;
+            if (guessNum>100 || guessNum<0 ){   
+                alertMsg("※ CAUTION ※", "yellow","red");
+                document.getElementById('desc').innerText = "Enter between 1-100";
+            }
+            else if (isNaN(guessNum) | guessNum.length==0){
+                alertMsg("※ CAUTION ※", "yellow","red");
+                document.getElementById('desc').innerText = "Please enter a NUBMER";
+            }
+            else if (guessNum==randomNumber){
+                alertMsg(" You GOT it!", "green","white");
+                document.getElementById('reset').style.display='block';
+                document.getElementById('guessInput').disabled = true;
+                document.getElementById('desc').textContent= "";
+            }
+            else{
+                cnt-=1;
+                checkGameOver();
+                alertMsg(" Wrong!", "red","white");
+                previousDisplay(guessNum);
+                if (guessNum>randomNumber)
+                    document.getElementById('desc').innerText = "The number is lower than " + guessNum;
+                else    
+                document.getElementById('desc').innerText = "The number is higher than " + guessNum;
+            }
+            document.getElementById('guessText').value="";
+        }
+
+        function checkGameOver(){
+            if (cnt==0){
+                alertMsg("GAME OVER", "red","white");
+                document.getElementById('reset').style.display='block';
+                document.getElementById('guessInput').disabled = true;
+            }
+        }
+
+        function previousDisplay(guessNum){
+            if (previousNum.length==0){
+                previousNum = "Previous guesses : ";
+            }
+            previousNum+=guessNum + " ";
+            document.getElementById('previous').innerText = previousNum;
+        }
+
+        function reset(){
+            cnt=10;
+            document.getElementById('desc').textContent= "";
+            document.getElementById('alert').textContent= "";
+            document.getElementById('previous').textContent= "";
+            previousNum="";
+            document.getElementById('guessText').value="";
+            document.getElementById('reset').style.display='none';
+            document.getElementById('guessInput').disabled = false;
+            numberInit();
+        }
+        numberInit();
+
+    </script>
+</body>
+</html>
