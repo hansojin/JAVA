@@ -3,17 +3,66 @@
 <head>
     <title>CSS Property Basic</title>
     <style>
-        div {
+        #prop {
             width: 100px; height: 100px;
             background-color: red;
 
             border: 20px solid black;
             margin: 10px; padding: 30px;
         }
+        #four {
+            width: 100px; height: 100px;
+            background-color: red;
+
+            /* 속성 4개 : 위 오른쪽 아래 왼쪽 */
+            margin: 0 30px 0 30px;
+            padding: 0 30px 0 30px;
+        }
+        #two {
+            width: 100px; height: 100px;
+            background-color: red;
+
+            /* 속성 2개: 상하 좌우 */
+            margin: 0 30px; padding: 0 30px;
+        }
+        .box {
+            border-width: thick;
+            border-style: dashed;
+            border-color: black;
+        }
+
+        .box2{
+            border : 3px double #ddd;
+            border-radius: 20px;
+        }
+
+        .box3{
+            border : 3px double pink;
+            border-radius: 20px;
+            border-radius: 50px 40px 20px 10px;
+            /* 좌측상단부터 시계방향 */
+        }
     </style>
 </head>
 <body>
-    <div></div>
+    <div id = "prop"></div>
+    <br><hr><br>
+    <div id = "four"></div>
+    <br>
+    <div id = "two"></div>
+    <br><hr><br>
+    <div class="box">
+        <h1>Lorem ipsum dolor amet</h1>
+    </div>
+    <br>
+    <div class="box2">
+        <h1>Lorem ipsum dolor amet</h1>
+    </div>
+    <br>
+    <div class="box3">
+        <h1>Lorem ipsum dolor amet</h1>
+    </div>
+
 </body>
 </html>
 

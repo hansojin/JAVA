@@ -16,6 +16,21 @@
             float : right;
 			margin-right: 20px;
 		}
+		.left {
+			background-color: #FF8C00;
+			width: 150px;
+			height: 50px; 
+			float: left;
+		}
+		.right {
+			background-color: #9932CC;
+			width: 150px;
+			height: 50px; 
+			float: right;
+		}
+        #floor{
+            clear: both;
+        }
 	</style>
 </head>
 
@@ -37,6 +52,28 @@
 		Nulla et elit placerat, malesuada massa sit amet, dictum quam. Duis eu turpis non sapien molestie luctus nec a tortor. Nunc non est eget elit suscipit interdum. Maecenas iaculis lobortis lorem et dignissim. Nullam dapibus, arcu vel malesuada egestas, nisi mi accumsan tellus, at rhoncus dolor nisi in tortor. Donec at aliquam lectus, ac egestas odio. Proin convallis sapien id consectetur egestas. Sed at varius libero, ut ultricies eros. Suspendisse potenti. Vivamus non posuere mauris. Maecenas luctus elementum justo, non tempor nisl blandit id. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </p>
 
+	<br><hr><br>
+
+	<h1>clear 속성을 이용한 위치 조정</h1>
+	<div>
+		<div class="left">왼쪽 끝에 위치하고 싶은 요소</div>
+		<div class="right">오른쪽 끝에 위치하고 싶은 요소</div>
+	</div>
+	<p>이 글자를 아래쪽에 제대로 출력하고 싶어요!</p>
+    
+    <br><br>
+    <hr>
+    <br>
+    <div>
+		<div class="left">왼쪽 끝에 위치하고 싶은 요소</div>
+		<div class="right">오른쪽 끝에 위치하고 싶은 요소</div>
+	</div>
+	<p id = "floor">이 글자를 아래쪽에 제대로 출력하고 싶어요!</p>
+	<br><br>
 </body>
 
 </html>
+
+<!-- 
+float : html 요소가 주변 다른 요소들과 어울리도록 설정
+clear : float 설정이 적용된 후 나타나는 요소들이 더 이상 float에 영향 받지 않도록 설정 (left, right, both) -->

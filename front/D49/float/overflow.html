@@ -9,14 +9,59 @@
 			border: 3px solid #73AD21;
 			padding: 5px;
 		}
-		img { float: left; }
-        /* float 준거 아래서 삭제하기 */
-		#paragraph { clear: left; }
-		.good { overflow: auto; }
-        .great {
-            height : 100px;
-            overflow : hidden;
-        }
+
+		img {
+			float: left;
+		}
+
+		/* float 준거 아래서 삭제하기 */
+		#paragraph {
+			clear: left;
+		}
+
+		.good {
+			overflow: auto;
+		}
+
+		.great {
+			height: 100px;
+			overflow: hidden;
+		}
+
+		.wrap {
+			border: 1px #F00 solid;
+		}
+
+		.left_box {
+			border: 1px gold solid;
+			width: 200px;
+			height: 200px;
+			float: left;
+		}
+
+		.test_box {
+			border: 2px #0F0 solid;
+			width: 200px;
+			height: 200px;
+		}
+
+		.wrap2 {
+			border: 1px #F00 solid;
+			overflow: hidden;
+		}
+
+		.left_box2 {
+			border: 1px gold solid;
+			width: 200px;
+			height: 200px;
+			float: left;
+		}
+
+		.test_box2 {
+			border: 2px #0F0 solid;
+			width: 200px;
+			height: 200px;
+		}
 	</style>
 </head>
 
@@ -26,19 +71,32 @@
 	<div> &nbsp; 이미지와 함께 하고 싶은 내용
 		<img src="moon.jpg" alt="moon" width="245" height="185">
 	</div>
-    
+
 	<p id="paragraph">
-        <br><b>overflow</b> 속성값을 <b>auto</b>로 주면 자동으로 컨테이너 요소의 크기도 함께 늘어납니다!
-    </p>
+		<br><b>overflow</b> 속성값을 <b>auto</b>로 주면 자동으로 컨테이너 요소의 크기도 함께 늘어납니다!
+	</p>
 
 	<div class="good"> &nbsp; overflow : <b>auto </b>
 		<img src="moon.jpg" alt="moon" width="245" height="185">
 	</div>
-    <br>
-    <div class="great"> &nbsp; overflow : <b>hidden </b>
+	<br>
+	<div class="great"> &nbsp; overflow : <b>hidden </b>
 		<img src="moon.jpg" alt="moon" width="245" height="185">
 	</div>
 
+	<br><br><hr><br><br>
+
+	<div class="wrap">
+		<div class="left_box"></div>
+	</div>
+	<div class="test_box"><b>overflow BASIC</b></div>
+
+	<br><hr><br>
+
+	<div class="wrap2">
+		<div class="left_box2"></div>
+	</div>
+	<div class="test_box2"><b>overflow HIDDEN</b></div>
 </body>
 
 </html>

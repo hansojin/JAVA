@@ -16,5 +16,280 @@
         <a href= "https://movie.daum.net/moviedb/main?movieId=10250">
             <img src="when_harry_met_sally.jpg">
         </a>
+
+        <br><hr><br>
+        <header>
+            <title>HI</title>
+        </header>
+        <body>
+            <h1>one</h1>
+            <h2>two</h2>
+            <h3>three</h3>
+            <h4>four</h4>
+            <h5>five</h5>
+            <h6>six</h6>
+    
+            <hr />
+    
+            <h1>lorem ipsum</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dolor nisi, laoreet nec varius sed, congue venenatis tellus. Quisque nisi lectus, egestas et euismod eget, dapibus id nibh. In eleifend placerat vulputate. Sed tincidunt tortor ac nunc sagittis at condimentum lorem suscipit. Mauris gravida sodales nunc, non vehicula lorem feugiat quis. Aenean elit ante, placerat eget semper ut, fringilla blandit ipsum. Aliquam erat volutpat. Suspendisse in odio metus. Suspendisse potenti. Mauris porta magna diam.</p>
+            <p>Suspendisse tortor purus, tempor id vestibulum ac, pulvinar vitae sem. Nullam sit amet urna id nibh tincidunt semper. Morbi in leo hendrerit nisi elementum feugiat. Donec sagittis erat quis orci ullamcorper aliquam nec sed erat. Aenean ultricies pellentesque velit, sit amet aliquet tellus elementum et. Proin id ornare tortor. Donec non nibh at nulla sagittis aliquet tempus vitae diam. Nulla facilisi.</p>
+        
+            <hr>
+            
+            <!-- 지금은 css로 문자를 꾸미기 때문에 잘 쓰이지 않음 -->
+            <b>Lorem ipsum dolor sit amet</b><br />
+            <i>Lorem ipsum dolor sit amet</i><br />
+            <small>Lorem ipsum dolor sit amet</small><br />
+            <sub>Lorem ipsum dolor sit amet</sub><br />
+            <sup>Lorem ipsum dolor sit amet</sup><br />
+            <ins>Lorem ipsum dolor sit amet</ins><br />
+            <del>Lorem ipsum dolor sit amet</del><br />
+        
+            <hr>
+    
+            <ruby>
+                <!-- 한자 위에 표시되는 글자 -->
+                <span>大韓民國</span>
+                <rt>대한민국</rt>   
+            </ruby>
+    
+            <hr>
+    
+            <h2>ol tag</h2>
+            ordered list
+            <ol>
+                <li>Facebook</li>
+                <li>Tweeter</li>
+                <li>Linked In</li>
+            </ol>
+            <h2>ul tag</h2>
+            unordered list
+            <ul>
+                <li>Facebook</li>
+                <li>Tweeter</li>
+                <li>Linked In</li>
+            </ul>
+    
+            <hr>
+    
+            <ul>
+                <li>HTML5
+                    <ol>
+                        <li>Multimedia Tag</li>
+                        <li>Connectivity</li>
+                        <li>Device Access</li>
+                    </ol>
+                </li>
+                <li>CSS3
+                    <ul>
+                        <li>Animation</li>
+                        <li>3D Transform</li>
+                    </ul>
+                </li>
+            </ul>
+    
+            <hr>
+    
+            <dl>
+                <dt>HTML5</dt>
+                <dd>Multimedia Tag</dd>
+                <dd>Connectivity</dd>
+                <dd>Device Access</dd>
+                <dt>Milk</dt>
+                <dd>Animation</dd>
+                <dd>3D Transform</dd>
+            </dl>
+    
+            <!-- 
+                dl _ definition list (정의 목록 태그)
+                dt _ definition term (정의 용어 태그)
+                dl _ definition desc (정의 설명 태그)
+            -->
+            <br><hr><br>
+
+            <table border="3">
+                <caption>caption</caption>
+                <tr>
+                    <th>header 1</th>
+                    <th>header 2</th>
+                </tr>
+                <tr>
+                    <td>data 1</td>
+                    <td>data 2</td>
+                </tr>
+                <tr>
+                    <td>data 3</td>
+                    <td>data 4</td>
+                </tr>
+            </table>
+    
+            <!-- 
+                tr _ table row : 표 내부 행 태그
+                th _ table header : 행 내부 제목 셀 태그
+                td _ table data : 행 내부 일반 셀 태그
+                boarder : 표의 테두리 두께 지정
+             -->
+             
+             <br><br>
+    
+             <table border="1" >
+                <tr>
+                    <th colspan="3">Table Data</th>
+                    <th rowspan="3">Table Data</th>
+                </tr>
+                <tr>
+                    <td>Table Data</td>
+                    <td rowspan="2">Table Data</td>
+                    <td>Table Data</td>
+                </tr>
+                <tr>
+                    <td>Table Data</td>
+                    <td>Table Data</td>
+                </tr>
+            </table>
+    
+            
+            <br><hr><br>
+    
+            <form method="get">
+                <input type="text" name="search" />
+                <input type="submit" />
+            </form>
+            <!-- 
+                자주 사용되는 method : GET POST
+                input type : 
+                    button, checkbox, file, hidden,
+                    image, password, radio, reset,
+                    submit, text
+             -->
+            <br><br>
+    
+            <form>
+                <input type="text" name="name" /><br />
+                <input type="password" name="password" /><br />
+                <input type="file" name="file" /><br />
+                <textarea></textarea>
+                <input type = "reset" />
+                <input type="submit" />
+            </form>
+            <br><br>
+    
+            <form>
+                <label for="name">이름</label>
+                <input id="name" type="text" />
+            </form>
+            <!--  라벨 태그를 클릭하면, 자동으로 input 태그에 초점이 맞춰짐-->
+    
+            <br><hr><br>
+    
+            <form>
+                <input type="color" /><br />
+                <input type="date" /><br />
+                <input type="datetime" /><br />
+                <input type="datetime-local" /><br />
+                <input type="email" /><br />
+                <input type="month" /><br />
+                <input type="number" /><br />
+                <input type="range" /><br />
+                <input type="search" /><br />
+                <input type="tel" /><br />
+                <input type="time" /><br />
+                <input type="url" /><br />
+                <input type="week" />
+            </form>
+    
+            <br><hr><br>
+    
+            <form>
+                <fieldset>
+                    <legend>입력 양식</legend>
+                    <table>
+                        <tr>
+                            <td><label for="name2">이름</label></td>
+                            <td><input id="name2" type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="mail">이메일</label></td>
+                            <td><input id="mail" type="email" /></td>
+                        </tr>
+                    </table>
+                    <input type="submit" />
+                </fieldset>
+            </form>
+    
+            <br><hr><br>
+    
+            <select>
+                <option>JH</option>
+                <option>TM</option>
+                <option>MH</option>
+                <option>KB</option>
+                <option>JK</option>
+                <option>ALL</option>
+            </select>
+            <br><br>
+            <select multiple="multiple">
+                <option>JH</option>
+                <option>TM</option>
+                <option>MH</option>
+                <option>KB</option>
+                <option>JK</option>
+            </select>
+            <br><br>
+            <select>
+                <optgroup label="HTML5">
+                    <option>Multimedia Tag</option>
+                    <option>Connectivity</option>
+                    <option>Device Access</option>
+                </optgroup>
+                <optgroup label="CSS3">
+                    <option>Animation</option>
+                    <option>3D Transform</option>
+                </optgroup>
+            </select>
+            <!-- optgroup 태그 _ 선택 옵션을 묶을 때 사용 -->
+    
+            <br><hr><br>
+
+            <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <div>Lorem ipsum</div>
+        <span>Lorem ipsum</span>
+        <span>Lorem ipsum</span>
+        <span>Lorem ipsum</span>
+        <span>Lorem ipsum</span>
+        <span>Lorem ipsum</span>
+        <!-- div는 block 형식으로 공간 분할
+            span은 inline 형식으로 공간 분할 -->
+
+        <br><hr><br>
+
+        <header>
+            <h1>HTML5 Header</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#">Menu - 1</a></li>
+                <li><a href="#">Menu - 2</a></li>
+                <li><a href="#">Menu - 3</a></li>
+            </ul>
+        </nav>
+        <section>
+            <article>
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+            <article>
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+        </section>
+        <footer>
+            <address>서울특별시 강서구 내발산동</address>
+        </footer>
+    
     </body>
 </html>

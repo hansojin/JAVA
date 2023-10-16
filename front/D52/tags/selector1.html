@@ -9,6 +9,23 @@
         h1:last-of-type { color: blue; }
         h2:last-of-type { color: blue; }
         h3:last-of-type { color: blue; }
+
+        body>div> *:first-of-type { color: pink; }
+
+        .box>p:nth-child(5){
+		color:red;
+	    }
+        /* p:nth-child(5){
+		    color:red;
+	    } */
+	
+        .box > p:nth-child(4){
+		    color : blue;
+	    }  	
+
+        .box>p:nth-of-type(2){
+            color : orange;
+        }
     </style>
 </head>
 <body>
@@ -19,6 +36,27 @@
     <h2>Header - 2</h2>
     <h1>Header - 1</h1>
     <h1>hi</h1>
+    <hr>
+
+    <div>
+        <h1>Header - 1</h1>
+        <h2>Header - 2</h2>
+        <h3>Header - 3</h3>
+        <h4>Header - 4</h4>
+        <h5>Header - 5</h5>
+        <h6>Header - 6</h6>
+        <h1>hi</h1>
+    </div>
+    <hr>
+
+    <div class="box">
+		<p>     1. p태그1</p>
+		<span>  2. span태그1</span>
+		<p>     3. p태그2</p>
+		<span>  4. span태그2</span>
+		<p>     5. p태그3</p>
+	</div>
+    <br><br>
 </body>
 </html>
 

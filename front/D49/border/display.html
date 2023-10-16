@@ -3,7 +3,7 @@
 <head>
     <title>Display</title>
     <style>
-        p {font-weight:bold ; color:blueviolet}
+        #title {font-weight:bold ; color:blueviolet}
         #box1 {
             display: none;
         }
@@ -17,34 +17,63 @@
             display: inline-block;
         }
 
+        .box {
+            display: inline;
+            background-color: red;
+            width: 100px;
+            height: 50px;
+            margin: 10px;
+        }
+        .box2 {
+            display: inline-block;
+            background-color: red;
+            width: 100px;
+            height: 50px;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
-    <p>basic</p>
+    <p id = "title">basic</p>
     <span>AAAA</span>
     <div id="box">BBBB</div>
     <span>CCCC</span>
     <hr>
-    <p>none</p>
+    <p id = "title">none</p>
     <span>AAAA</span>
     <div id="box1">BBBB</div>
     <span>CCCC</span>
     <hr>
-    <p>block</p>
+    <p id = "title">block</p>
     <span>AAAA</span>
     <div id="box2">BBBB</div>
     <span>CCCC</span>
     <hr>
-    <p>inline</p>
+    <p id = "title">inline</p>
     <span>AAAA</span>
     <div id="box3">BBBB</div>
     <span>CCCC</span>
     <hr>
-    <p>inline-block</p>
+    <p id = "title">inline-block</p>
     <span>AAAA</span>
     <div id="box4">BBBB</div>
     <span>CCCC</span>
-    <hr>
+    
+    <br><hr><br>
+
+    <p><b>inline이라 안 먹음</b></p>
+    <span>더미 객체</span>
+    <div class="box">대상 객체</div>
+    <span>더미 객체</span>
+    <p>의미 없는 더미 객체</p>
+
+    <br>
+    <p><b>inline-block은 먹음</b></p>
+    <span>더미 객체</span>
+    <div class="box2">대상 객체</div>
+    <span>더미 객체</span>
+    <p>의미 없는 더미 객체</p>
+
 </body>
 </html>
 

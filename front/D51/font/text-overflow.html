@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style> 
-div.a {
-  white-space: nowrap; 
-  width: 50px; 
-  overflow: hidden;
-  text-overflow: clip; 
-  border: 1px solid #000000;
-}
+  <style>
+    div.a {
+      white-space: nowrap;
+      width: 50px;
+      overflow: hidden;
+      text-overflow: clip;
+      border: 1px solid #000000;
+    }
 
-div.b {
-  white-space: nowrap; 
-  width: 50px; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  border: 1px solid #000000;
-}
+    div.b {
+      white-space: nowrap;
+      width: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border: 1px solid #000000;
+    }
 
-div.c {
-  white-space: nowrap; 
-  width: 50px; 
-  overflow: hidden;
-  text-overflow: "----"; 
-  border: 1px solid #000000;
-}
-</style>
+    div.c {
+      white-space: nowrap;
+      width: 50px;
+      overflow: hidden;
+      text-overflow: "----";
+      border: 1px solid #000000;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>The text-overflow Property</h1>
+  <h1>The text-overflow Property</h1>
 
-<p>The following two divs contains a text that will not fit in the box.</p>
+  <p>The following two divs contains a text that will not fit in the box.</p>
 
-<h2>text-overflow: clip (default):</h2>
-<div class="a">Hello world!</div>
+  <h2>text-overflow: clip (default):</h2>
+  <div class="a">Hello world!</div>
 
-<h2>text-overflow: ellipsis:</h2>
-<div class="b">Hello world!</div>
+  <h2>text-overflow: ellipsis:</h2>
+  <div class="b">Hello world!</div>
 
-<h2>text-overflow: "----" (user defined string):</h2>
-<div class="c">Hello world!</div>
+  <h2>text-overflow: "----" (user defined string):</h2>
+  <div class="c">Hello world!</div>
 
-<p><strong>Note:</strong> The text-overflow: "<em>string</em>" only works in 
-Firefox.</p>
+  <p><strong>Note:</strong> The text-overflow: "<em>string</em>" only works in Firefox.</p><br><hr><br>
+  <!-- text-overflow 속성값
+    * clip 기본값. 텍스트를 자름
+    * ellipsis 잘린 텍스트를 생략 부호(...)로 표시함
+    * string 잘린 텍스트를 지정한 문자열로 표시 예: div{text-overflow:"---";}
+    * 하지만 string의 경우, 현재 지원하는 브라우저가 없음   -->
 
 </body>
+
 </html>
 
-<!-- text-overflow 속성값
-
-* clip 기본값. 텍스트를 자름
-* ellipsis 잘린 텍스트를 생략 부호(...)로 표시함
-* string 잘린 텍스트를 지정한 문자열로 표시 예: div{text-overflow:"---";}
-  * 하지만 string의 경우, 현재 지원하는 브라우저가 없음   -->

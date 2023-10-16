@@ -1,57 +1,68 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <style>
-        #box{
-            background-color: greenyellow;
-            height:50px;
-            width: 80px;
-            color : white;
-            text-align: center;
-            padding : 12px 22px;
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
-        #section:hover #menu{
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
             display: block;
         }
-        #menu{
-            
-            width: 100px;
-            height: 65px;
-            border : 0.5px solid lightgray;
-            background-color: lightgoldenrodyellow;
-            text-align: left;
-            padding-left:0;
-            display:none;
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
         }
-        ul{
-            list-style: none;  
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
-        li a{
-            text-decoration: none;
+
+        .dropdown:hover .dropbtn {
+            background-color: darkolivegreen;
         }
-        li:hover{
-            background-color: lightgrey;
-        }
+
     </style>
 </head>
+
 <body>
-    <h1>Dropdown Menu</h1>
+
+    <h2>Dropdown Menu</h2>
     <p>Move the mouse over the button to open the dropdown menu.</p>
 
-    <div id="section">
-        <div id = "box">Dropdown</div>
-        <div id ="menu">
-            <ul>
-                <li><a href="#">One</a></li>
-                <li><a href="#">Two</a></li>
-                <li><a href="#">Three</a></li>
-            </ul>    
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
         </div>
-        <p><b>Note: </b>We use href="#" for test links. In a real web site this would be URLs.</p>
-
     </div>
+
+    <p><strong>Note:</strong> We use href="#" for test links. In a real web site this would be URLs.</p>
+
 </body>
+
 </html>

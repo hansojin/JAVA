@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <style>
         .dropdown {
@@ -8,15 +7,7 @@
             display: inline-block;
         }
 
-        .dropbtnLeft {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        .dropbtnRight {
+        .dropbtn {
             background-color: #4CAF50;
             color: white;
             padding: 16px;
@@ -42,7 +33,7 @@
         }
 
         .dropdown-content a:hover {
-            background-color: #f1f1f1
+            background-color: #f1f1f1;
         }
 
         .dropdown:hover .dropdown-content {
@@ -50,9 +41,8 @@
         }
 
         .dropdown:hover .dropbtn {
-            background-color: darkolivegreen;
+            background-color: #3e8e41;
         }
-
     </style>
 </head>
 
@@ -60,23 +50,23 @@
 
     <h2>Aligned Dropdown Content</h2>
     <p>Determine whether the dropdown content should go from left to right or right to left with the left and right properties.</p>
-    
+
     <div class="dropdown">
-        <button class="dropbtnLeft">Left</button>
+        <button class="dropbtn">Left</button>
         <div class="dropdown-content">
             <a href="#">Link 1</a>
             <a href="#">Link 2</a>
             <a href="#">Link 3</a>
         </div>
     </div>
+
     <div class="dropdown" style="float:right;">
-        <button class="dropbtnRight">Right</button>
-        <div class="dropdown-content">
+        <button class="dropbtn">Right</button>
+        <div class="dropdown-content" style="right:0">
             <a href="#">Link 1</a>
             <a href="#">Link 2</a>
             <a href="#">Link 3</a>
         </div>
     </div>
 </body>
-
 </html>
