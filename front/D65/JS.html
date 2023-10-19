@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #dotted{
+            border: 1px dotted gray;
+            border-style: none none dotted; 
+            color: #fff; 
+            background-color: #fff;
+        }
+        label{
+            margin : 10px 10px 20px 10px;
+            font-weight: bold;
+        }
+        #registerBtn{
+            display:block;
+            height: 50px;
+            width: 220px;
+            margin: 10px 10px 20px 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #name,#major{
+            height: 30px;
+            width: 165px;
+            margin-bottom:8px;
+            border-radius: 5px;
+        }
+        table{
+            border: 1px solid #333333;
+            border-collapse: collapse;
+            width: 400px;
+            height: 45px;
+            margin-left:10px;
+            text-align: center;
+        }
+        #nameCell{
+            width: 35%;
+        }
+        #regAlert{
+            color:red;
+            font-weight: bold;
+        }
+        #alarmBtn{
+            margin-left:330px;
+            height: 60px;
+            width: 150px;
+            font-size: 1.3em;
+            display:block
+        }
+        .alarmC{
+            margin: 10px;
+            height: 30px;
+            width: 350px;
+            background-color: lightgray;
+            border-left: 3px solid black;
+            text-align: center;
+            font-size: 1.3em;
+            position: fixed;
+            right:20px;
+        }
+        span{
+            margin:20px
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 이벤트 한번 실행 -->
+    <h2>상품설명</h2>
+    <h3>HTML+CSS+JS 웹 표준의 정석</h3>
+    <p>한 권으로 끝내는 웹 기본 교과서</p>
+    <button id = 'bookBtn' ">주문하기</button>
+    <hr id="dotted">
+    <p id="book"></p>
+    <script>
+        const btn = document.getElementById('bookBtn')
+        btn.addEventListener('click',event=>{
+            const kitty = document.querySelector('#book')
+            const url = document.createElement('a')
+            const urlText = document.createTextNode('HTML+CSS+JS 웹 표준의 정석')
+            url.appendChild(urlText)
+            url.setAttribute('href','#')
+            book.appendChild(url)
+        }, {once:true})  // 이벤트 한번만 실행
+    </script>
+
+    <!-- 2. register -->
+    <hr><h2> 참가자 명단</h2>
+    <label for="name">이름</label>
+    <input type="text" id="name"><br>
+    <label for="major">전공</label>
+    <input type="text" id="major">
+    <button id = 'registerBtn' onclick="addTable()">등록하기</button>
+    <p id="regAlert"></p>
+    <table border="1px">
+        <tr>
+            <th id="nameCell">이름</th>
+            <th>전공</th>
+        </tr>
+    </table>
+    <script>
+        function addTable(){
+            let name = document.querySelector('#name') 
+            let major= document.querySelector('#major') 
+            
+            if(name.value.length == 0)
+                document.getElementById('regAlert').textContent="Enter name";
+
+            else if(major.value.length == 0)
+                document.getElementById('regAlert').textContent="Enter major";
+            else {
+                document.getElementById('regAlert').textContent="";
+                const table = document.querySelector('table')
+                document.getElementById('nameCell').style.height='45px';
+                const newRow = table.insertRow();
+                newRow.style.height='45px';
+                const newName = newRow.insertCell(0)
+                const newMajor = newRow.insertCell(1)
+
+                newName.innerText = name.value
+                newMajor.innerText = major.value
+            }   
+
+        }
+    </script> 
+    
+    
+    <!-- 3. 알림창 -->
+    <br><hr><div id="alarmZone"></div><br>
+    <button id="alarmBtn" onclick="alarmDP()">clickMe</button>
+    <script>
+        function alarmDP(){
+            let pos = document.getElementById('alarmZone');
+            let dp = document.createElement("div")
+            dp.classList.add('alarmC');
+            dp.innerText = '알림 내용';
+            pos.appendChild(dp);
+
+            setTimeout(()=>{
+                dp.remove();
+            },1000)
+        }
+    </script>
+
+    <!-- 4. 시간대별 이미지 -->
+    <br><hr><br>
+    <p id="now"></p>
+    <img id = "timeImg" src="red.jpg" height="200px">
+    <script>
+        function startTime() {
+            document.getElementById('now').innerHTML = new Date().toLocaleString()
+            let time = setTimeout(startTime, 1000)
+            let now = new Date();
+            let hour = now.getHours()
+            if (hour>=12)
+                document.getElementById('timeImg').src='blue.jpg'
+        }
+        document.addEventListener("DOMContentLoaded", function (event) {
+            startTime()
+        })
+    </script>
+
+    <!-- EX5 todoList-->
+    <hr><h3>TodoList</h3>
+    <input id="todo">
+    <button id="add-button">ADD</button>
+    <div id="todo-list"></div><br>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('#todo')
+            const todoList = document.querySelector('#todo-list')
+            const addButton = document.querySelector('#add-button')
+    
+            let keyCount = 0
+            const addTodo = () => {
+                if (input.value.trim() === '') {
+                    alert('할 일을 입력해주세요.')
+                    return
+                }
+    
+                const item = document.createElement('div')
+                const checkbox = document.createElement('input')
+                const text = document.createElement('span')
+                const button = document.createElement('button')
+    
+                const key = keyCount
+                keyCount += 1
+    
+                item.setAttribute('data-key', key)
+                item.appendChild(checkbox)
+                item.appendChild(text)
+                item.appendChild(button)
+                todoList.appendChild(item)
+    
+                checkbox.type = 'checkbox'
+                checkbox.addEventListener('change', (event) => {
+                    item.style.textDecoration = event.target.checked ? 'line-through' : ''
+                })
+    
+                text.textContent = input.value
+    
+                button.textContent = 'del'
+                button.addEventListener('click', () => {
+                    removeTodo(key)
+                })
+    
+                input.value = ''
+            }
+    
+            const removeTodo = (key) => {
+                const item = document.querySelector(`[data-key="${key}"]`)
+                todoList.removeChild(item)
+            }
+    
+            addButton.addEventListener('click', addTodo)
+            input.addEventListener('keyup', (event) => {
+                if (event.keyCode === 13) {
+                    addTodo()
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>

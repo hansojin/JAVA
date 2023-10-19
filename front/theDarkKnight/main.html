@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <style>
+       body{
+            background-image: url('../theDarkKnight/props/png/background.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+       }
+        *{
+            color:white;
+            font-family: 'Permanent Marker', cursive;
+        }
+        #video{
+            position: fixed;
+            bottom:120px;
+            left:90px
+        }
+        .title{
+            font-size: 4.3em;
+            font-weight: bold;
+            font-family: 'Nosifer', sans-serif;
+            position: fixed;
+            top:170px;
+            left:80px
+        }
+        ul>li{
+            list-style: none;
+            font-size: 2.1em;
+            float:right;
+            margin-right: 100px;
+            margin-top:40px;
+            cursor:pointer;
+        }
+        ul>li:hover, a:hover{
+            color : rgb(168, 19, 19);
+        }
+        .serieslist{
+            display:none;           
+            /* display:block; */
+        }
+        .serieslist>li{
+            clear:both;
+        }
+        
+        .serieslist>li {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        #dropdown:hover .serieslist{
+            color:yellow;
+            /* display:block; */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li id = 'dropdown'>SERIES</li>
+        <li>GALLERY</li>
+        <li>CHARACTER</li>
+        <li>INFO</li>
+    </ul>
+    <ul class="serieslist">
+        <li><a href='https://www.imdb.com/title/tt0372784/'>Batman Begins</a></li>
+        <li><a href='https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1'>The Dark Knight</a></li>
+        <li><a href='https://www.imdb.com/title/tt1345836/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_the%2520dark%2520knight%2520rise'>The Dark Knight Rises</a></li>
+    </ul>
+    <p class="title">The Dark Knight</p>
+    <iframe id ="video" width="840" height="472.5" src="https://www.youtube.com/embed/TQfATDZY5Y4?si=aItVNeskClziyYwx&autoplay=1&mute=1&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // EX1
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.querySelector('#email')
+            const p = document.querySelector('#desc')
+            const isEmail = v => {
+                return (v.indexOf('@') > 1) && (v.split('@')[1].indexOf('.') > 1) && (v.split('.')[1] && v.split('.')[1].length>0)
+            }
+
+            input.addEventListener('keyup', e => {
+                const value = e.currentTarget.value
+                if (isEmail(value)) {
+                    p.style.color = 'green'
+                    p.textContent = `이메일 형식입니다: ${value}`
+                } else {
+                    p.style.color = 'red'
+                    p.textContent = `이메일 형식이 아닙니다: ${value}`
+                }
+            })
+        })
+
+        // EX2 배열 입출력
+        let tmp = Array(10).fill(0);
+        console.log(tmp)    // [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+
+        tmp = Array(10).fill();
+        console.log(tmp)    // [undefined, ... , undefined ]
+
+        tmp = Array(10).fill().map((v,i)=>i+1)
+        console.log(tmp)    // [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+
+        tmp = String.fromCharCode(65);  
+        console.log(tmp)    // A
+
+        tmp = "A".charCodeAt();
+        console.log(tmp)    // 65
+
+        tmp = Array(26).fill().map((v,i)=>String.fromCharCode(i+97))
+        console.log(tmp)    // [ "a", "b", "c", "d", "e", "f", … ]
+
+
+    </script>   
+</head>
+<body>
+    <!-- EX1 이메일 유효 검사-->
+    <label for="email">email : </label>
+    <input type = "email" id = "email">
+    <p id="desc"></p>
+    <p id="reg"></p>
+
+    <!-- 또는 정규표현식 사용 -->
+    <script>
+        let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+        let testEmails = ["notanemail.com", "workingexample@email.com", 
+            "another_working@somethingelse.org", "notworking@1.com"];
+        testEmails.forEach((address) => {
+            console.log(regex.test(address))    // F T T F
+        });
+    </script>
+
+    <!-- EX2 배열 입출력-->
+    <p>check console</p>
+    
+</body>
+</html>
