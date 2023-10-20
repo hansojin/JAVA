@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <style>
+       body{
+            background-image: url('props/png/background.png');
+            background-repeat: no-repeat;
+            background-size: cover; 
+            /* background-color: rgb(36, 4, 4); */
+       }
+        *{
+            color:white;
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        /* banner */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 300px;
+            z-index: 1;
+            text-align: right;
+            margin-right: 200px;
+            font-size: 1.4em;
+        }
+
+        .dropdown-content a {
+            /* padding: 12px 16px; */
+            text-decoration: none;
+            display: block;
+            margin:20px;
+        }
+        .dropdown-content a:first-child{
+            margin-top: 80px;
+        }
+
+        .dropdown-content a:hover {
+            color: rgb(168, 19, 19);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: rgb(168, 19, 19);
+        }
+        ul li{
+            list-style: none;
+            float:right;
+            margin:20px;
+            margin-right:215px;
+            font-size: 1.75em;
+            cursor: pointer;
+        }
+        ul li:nth-child(3){
+            color: gray;
+            text-shadow: 1px 3px 3px rgb(168, 19, 19);
+        }
+        ul li:hover{
+            color : rgb(168, 19, 19);
+        }
+        
+        img{
+            height: 400px;
+            cursor:pointer
+        }
+        img:nth-child(even){
+            filter: drop-shadow(0 0 0.75rem crimson);
+        }
+
+        .joker{
+            position: fixed;
+            height: 450px;
+            bottom:10px;
+            left:90px;
+            z-index: 888;
+        }
+        .batman{
+            position: fixed;
+            height: 800px;
+            bottom:40px;
+            left:20px;
+            z-index: 777;
+        }
+        .twoface{
+            position: fixed;
+            bottom:200px;
+            left:450px;
+        }
+        .mask{
+            height: 300px;
+            position: fixed;
+            bottom:500px;
+            left:380px;
+            z-index: 555;
+        }
+        .line{
+            height:750px;
+            width: 950px;
+            background-color: rgba(255,255,255,0.45);
+            position: fixed;
+            right:70px;
+            bottom:60px;
+            border-radius: 8%;
+            text-align: center;
+        }
+
+        div p{
+            color:white; 
+            /* text-shadow : 5px 5px 5px #ccc;   */
+            text-shadow : 5px 5px 5px black;
+            margin-bottom: 50px;
+            font-size: 1.25em;
+        }
+        div p:first-child{
+            margin-top: 40px;
+            margin-bottom: 60px;
+            text-shadow : 5px 5px 5px white; 
+        }
+        b{
+            letter-spacing: 6px;
+            color:white;
+            text-shadow : 5px 5px 5px rgb(168, 19, 19);
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <div class="dropdown" style="float:right">
+            <li class="dropbtn">SERIES</li>
+            <div class="dropdown-content" style="right:0">
+                <a href='https://www.imdb.com/title/tt0372784/' target="_blank">Batman Begins</a>
+                <a href='https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1' target="_blank">The Dark Knight</a>
+                <a href='https://www.imdb.com/title/tt1345836/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_the%2520dark%2520knight%2520rise' target="_blank">The Dark Knight Rises</a>
+            </div>
+        </div>
+        <li onclick="location.href='gallery.html'">GALLERY</li>
+        <li>CHARACTER</li>
+        <li onclick="location.href='info.html'">INFO</li>
+        <li onclick="location.href='home.html'">HOME</li>
+    </ul>
+
+    <img src="props/png/joker.png" class="joker" onmouseover="joker()" onmouseleave="mouseleave()">
+    <img src="props/png/mask.png" class="mask" onmouseover="mask()" onmouseleave="mouseleave()">
+    <img src="props/png/batman.png" class="batman" onmouseover="batman()" onmouseleave="mouseleave()">
+    <img src="props/png/twoface.png" class="twoface" onmouseover="twoface()" onmouseleave="mouseleave()">
+    
+    <div class="line">
+        <p class="text"></p>
+    </div>
+
+    <script>
+        function joker(){
+            let line = ` <p><b>= The Joker =</b></p>
+            <p>"Why so serious?" </p>
+            <p>"Do I really look like a guy with a plan?" </p>
+            <p>"I believe whatever doesn't kill you <br>simply makes you... stranger."</p>
+            <p>"Introduce a little anarchy. Upset the established order, <br>and everything becomes chaos." </p>
+            <p>"You see, madness, as you know,<br>  is like gravity. <br> All it takes is a little push."</p>
+            `
+            let text = document.querySelector('.text');
+            text.innerHTML = line;
+        }
+        function mask(){
+            let line = `<p><b>= Alfred Pennyworth =</b></p>
+            <p>"Some men just want to watch the world burn."</p>
+            <p>"He can make the choice that no one else can make, the right choice."</p>
+            <p>"Why do we fall, sir? So that we can learn to pick ourselves up."</p>
+            <p style="text-shadow : 5px 5px 5px rgb(168, 19, 19); "><b>= Jim Gordon =</b></p>
+            <p>"I knew Harvey Dent. I was his friend. And it will be <br>a very long time before someone inspires us the way he did."</p>
+            <p>"Gotham needs a hero with a face."</p>
+            <p>"It's about what's fair!" </p>
+            `
+            let text = document.querySelector('.text');
+            text.innerHTML = line;
+        }
+
+        function batman(){
+            let line = ` <p><b>= Batman =</b></p>
+            <p>"It's not who I am underneath, <br>but what I do that defines me."</p>
+            <p>"I'm whatever Gotham needs me to be."</p>
+            <p>"I'm not a hero. <br>I'm a high-functioning sociopath."</p>
+            <p>"The night is darkest just before the dawn."</p>
+            <p>"I won't kill you, but I don't have to save you."</p>
+            `
+            let text = document.querySelector('.text');
+            text.innerHTML = line;
+        }
+
+        function twoface(){
+            let line = ` <p><b>= Two-Face =</b></p>
+            <p>"The night is darkest just before the dawn."</p>
+            <p>"You either die a hero, <br>or you live long enough <br>to see yourself become the villain."</p>
+            <p>"The world is cruel, <br>and the only morality in a cruel world is chance."</p>
+            <p>"I make my own luck."</p>
+            <p>"The flip of a coin."</p>
+            `
+            let text = document.querySelector('.text');
+            text.innerHTML = line;
+        }
+
+        function mouseleave(){
+            let text = document.querySelector('.text');
+            text.innerHTML = ""
+        }
+
+    </script>
+</body>
+</html>

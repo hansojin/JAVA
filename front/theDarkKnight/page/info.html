@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <style>
+       body{
+            /* background-image: url('props/png/background.png');
+            background-repeat: no-repeat;
+            background-size: cover;  */
+            background-color: black;
+       }
+        *{
+            color:white;
+            font-family: 'Permanent Marker', cursive;
+        }
+
+        /* banner */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 300px;
+            /* z-index: 1; */
+            text-align: right;
+            margin-right: 200px;
+            font-size: 1.4em;
+        }
+
+        .dropdown-content a {
+            /* padding: 12px 16px; */
+            text-decoration: none;
+            display: block;
+            margin:20px;
+        }
+        .dropdown-content a:first-child{
+            margin-top: 80px;
+        }
+
+        .dropdown-content a:hover {
+            color: rgb(168, 19, 19);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: rgb(168, 19, 19);
+        }
+        ul li{
+            list-style: none;
+            float:right;
+            margin:20px;
+            margin-right:215px;
+            font-size: 1.75em;
+            cursor: pointer;
+        }
+        ul li:nth-child(4){
+            color: gray;
+            text-shadow: 1px 3px 3px rgb(168, 19, 19);
+        }
+        ul li:hover{
+            color : rgb(168, 19, 19);
+        }
+
+        img{
+            position: fixed;
+            left:200px;
+            top:220px;
+            border-radius: 4%;
+            filter: drop-shadow(0 0 1.2rem white)
+        }
+        img:hover{
+            cursor: pointer;
+        }
+        .info{
+            position: fixed;
+            left:750px;
+            top:170px;
+            right:90px;
+        }
+        p, #plot{
+            font-size: 1.1em;
+        }
+        b{
+            font-size: 1.2em;
+            text-shadow: 2px 5px 1.5px gray;
+        }
+        span{
+            position: fixed;
+            left:950px;
+        }
+        .subtitle>b{
+            color:lightgray;
+            text-shadow: 2px 5px 1.5px gray;
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <div class="dropdown" style="float:right">
+            <li class="dropbtn">SERIES</li>
+            <div class="dropdown-content" style="right:0">
+                <a href='https://www.imdb.com/title/tt0372784/' target="_blank">Batman Begins</a>
+                <a href='https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1' target="_blank">The Dark Knight</a>
+                <a href='https://www.imdb.com/title/tt1345836/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_the%2520dark%2520knight%2520rise' target="_blank">The Dark Knight Rises</a>
+            </div>
+        </div>
+        <li onclick="location.href='gallery.html'">GALLERY</li>
+        <li onclick="location.href='char.html'">CHARACTER</li>
+        <li>INFO</li>
+        <li onclick="location.href='home.html'">HOME</li>
+    </ul>
+    
+    <img src="props/jpg/poster.jpg" width="400px" onclick="location.href='https://www.imdb.com/title/tt0468569/?ref_=fn_al_tt_1';">
+    
+    <div class="info">
+        <div id="detail">
+            <p class="subtitle" style="font-size: 1.4em;"><b>details</b></p>
+            <p><b>Runtime</b> <span>2h 32m</span></p>
+            <p><b>Release</b> <span>Jul 18, 2008 Wide</span></p>
+            <p><b>Director</b> <span>Christopher Nolan</span></p>
+            <p><b>Genre</b> <span>Action, Adventure, Fantasy</span></p>
+            <p><b>Writer</b> <span>Jonathan Nolan, Christopher Nolan</span></p>
+            <p><b>Producer</b> <span>Emma Thomas, Charles Roven, Christopher Nolan</span></p>
+            <p><b>Rating</b> <span>PG-13 (Some Menace|Intense Sequences of Violence)</span></p>
+        </div>
+        <hr align="right" style='margin-top: 40px;'>
+        <div id="plot">
+            <p class="subtitle" style="font-size: 1.4em;"><b>plot</b></p>
+            <p>With the help of allies Lt. Jim Gordon (Gary Oldman) and DA Harvey Dent (Aaron Eckhart), Batman (Christian Bale) has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker (Heath Ledger) suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.</p>
+        </div>
+    </div>
+    
+</body>
+</html>
