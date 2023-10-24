@@ -132,12 +132,12 @@
       vec3 renderLayer(int layer, int layers, vec2 uv, inout float opacity, vec3 colour, float n) {
         vec2 _uv = uv;
         float scale = mod((u_time + zoomSpeed / float(layers) * float(layer)) / zoomSpeed, -1.);
-        uv *= 20.; // The initial scale. Increasing this makes the cells smaller and the "speed" apepar faster
-        uv *= scale*scale; // then modifying the overall scale by the generated amount
-        uv = rotate2d(u_time / 10.) * uv; // rotarting
-        uv += vec2(25. + sin(u_time*.1)) * float(layer); // ofsetting the UV by an arbitrary amount to make the layer appear different
+        uv *= 20.; 
+        uv *= scale*scale; 
+        uv = rotate2d(u_time / 10.) * uv; 
+        uv += vec2(25. + sin(u_time*.1)) * float(layer); 
     
-        vec3 pass = render(uv * multiplier, scale, colour) * .2; // render the pass
+        vec3 pass = render(uv * multiplier, scale, colour) * .2; 
         opacity = 1. + scale;
         float _opacity = opacity;
         float endOpacity = smoothstep(0., 0.4, scale * -1.);

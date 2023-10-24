@@ -86,6 +86,13 @@
             filter: drop-shadow(0 0 0.75rem crimson);
         }
 
+        span{
+            line-height: 640px;
+            font-size: 2em;
+            color:black;
+            text-shadow : 5px 5px 5px crimson;
+        }
+
         .joker{
             position: fixed;
             height: 450px;
@@ -141,6 +148,7 @@
             text-shadow : 5px 5px 5px rgb(168, 19, 19);
         }
         
+        
     </style>
 </head>
 <body>
@@ -165,7 +173,7 @@
     <img src="props/png/twoface.png" class="twoface" onmouseover="twoface()" onmouseleave="mouseleave()">
     
     <div class="line">
-        <p class="text"></p>
+        <p class="text"><span>Select a character to see a line</span> </p>
     </div>
 
     <script>
