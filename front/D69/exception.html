@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const h1 = document.querySelector('h1')
+            // h1.textContent = '안녕하세요' -> Uncaught TypeError: h1 is null
+
+            if (h1) {
+                h1.textContent = '안녕하세요'
+            } else {
+                console.log('h1 태그를 추출할 수 없습니다.')
+            }
+        })
+
+        function try_catch_finally() {
+            try {
+                console.log('A 위치입니다.')
+                throw "예외 강제 발생"
+            } catch (exception) {
+                console.log('B 위치입니다.')
+                return
+            } finally {
+                console.log('C 위치입니다.')
+            }
+        }
+        try_catch_finally()
+
+        try {
+            const array = new Array(999999999999999)
+        } catch (exception) {
+            console.log(exception)      // RangeError: Invalid array length
+            console.log(`예외 이름: ${exception.name}`) // RangeError
+            console.log(`예외 메시지: ${exception.message}`)    // Invalid array length
+            // 자바스크립트의 배열 크기는 4,294,967,295까지 가능 
+        }
+
+        function divide(a, b) {
+            if (b === 0) {
+                throw '0으로는 나눌 수 없습니다.'    // 단순 예외 발생
+            }
+            return a / b
+        }
+
+        console.log(divide(10, 2))
+        console.log(divide(10, 0))
+
+        function sum(x,y){
+            if (typeof x !== 'number' || typeof y!== 'number'){
+                throw new Error("Enter NUMBER");
+            } else{
+                return x+y;
+            }
+        }
+        console.log(sum('abc',1))
+    </script>
+</body>
+
+</html>

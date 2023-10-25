@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+    <script>
+        // obj 선언 및 호출
+        const pet = {   // 변수선언
+            name: '구름',
+        //  eat: function (food) { 또는 아래와 같이 간단하게 쓸 수 있음
+            eat(food) {
+                console.log(this.name + '이 ' + food + '을 먹습니다.')
+            }
+        }
+        pet.eat('밥')   // 메소드 호출
+
+        console.log(pet.name)       // 요소 접근 1. Obj.key
+        console.log(pet['name'])    // 요소 접근 2. Obj['key']
+
+        // 속성 확인
+        console.log(pet.name)   // 구름
+        console.log(pet.gender) // undefined
+
+        pet.gender = pet.gender!==undefined? pet.gender : 'boy'
+        pet.age = pet.age ? pet.age : '2'
+
+        console.log(pet.gender + " " + pet.age) // boy 2
+
+        // 객체에 속성 추가/삭제
+        const student = {}      // 객체 선언
+        student.이름 = 'JH'
+        student.취미 = 'sing'
+        student.장래희망 = 'moon'
+
+        console.log(student)    // Object { "이름": "JH", "취미": "sing", "장래희망": "moon" }
+        console.log(JSON.stringify(student, null, 2))   // 객체를 JSON 문자열로 변환 (value,replacer,space)
+                                // if repalcer == null or none, 객체 모든 속성이 JSON문자열에 포함
+
+        student['type']='sexy'  
+        delete student.취미
+
+        console.log(JSON.stringify(student, null, 2)) 
+        console.log(JSON.parse(JSON.stringify(student)))  // 다시 자바스크립트 객체로 변환
+
+        // toString 
+        // Object 라는 최상위 클래스 -> toString() 메소드 
+        class MyPet{
+            constructor(name,age){
+                this.name=name
+                this.age=age
+            }
+            // toString(){
+            //     return `name : ${this.name} age : ${this.age}`
+            // }
+        }
+        const mypet = new MyPet('roo',2)
+        console.log(mypet + '')     // name : roo age : 2
+        // without toString() : [object Object]
+
+        // 문자열 분리
+        let input = `
+        일자,달러,엔,유로
+        02,1141.8,1097.46,1262.37 
+        03,1148.7,1111.36,1274.65
+        04,1140.6,1107.81,1266.58  
+        07,1143.4,1099.58,1267.8
+        08,1141.6,1091.97,1261.07
+        `;
+
+        input1= input.split('\n')
+        for(var i=0;i<input1.length;i++)
+            console.log(input1[i])
+        
+        input2 = input.trim().split('\n').map(line=>line.split(','));
+        console.log(input2)
+
+
+        // 메소드 추가하기 _ power()
+        Number.prototype.power = function (n=2){
+            return this.valueOf()**n
+        }
+
+        const powerConst = 12
+        console.log(powerConst.power())  // 144  
+        console.log(powerConst.power(3)) // 1728
+        
+
+        // 메소드 추가하기 _ contain()
+        String.prototype.contain = function(data){
+            return this.indexOf(data)>=0
+        }
+        Array.prototype.contain = function(data){
+            return this.indexOf(data)>=0
+        }
+
+        const containTest = 'helloWorld'
+        console.log(containTest.contain('hello'))   //true
+        console.log(containTest.contain('hi'))      //false
+
+        const containArrayTest = [273, 32, 103, 57, 52]
+        console.log(containArrayTest.contain(32))   //true
+        console.log(containArrayTest.contain(321))  //false
+
+
+        // Number 객체 
+        const decimalPlace = 123.456789
+        // N번째 자리수 출력 _ toFixed()
+        console.log(decimalPlace)               // 123.456789
+        console.log(decimalPlace.toFixed(3))    // 123.457
+
+        // NaN(Not a Number)인지 또는 Infinity(무한)인지 확인
+        console.log(isNaN(decimalPlace))        //false
+        console.log(isFinite(decimalPlace))     //true
+
+
+        // 데이터 정렬
+        const books = [{
+            name: '혼자 공부하는 파이썬',
+            price: 18000,
+            publisher: '한빛미디어'
+        }, {
+            name: 'HTML5 웹 프로그래밍 입문',
+            price: 26000,
+            publisher: '한빛아카데미'
+        }, {
+            name: '머신러닝 딥러닝 실전 개발 입문',
+            price: 30000,
+            publisher: '위키북스'
+        }, {
+            name: '딥러닝을 위한 수학',
+            price: 25000,
+            publisher: '위키북스'
+        }]
+        const bookSort = _.sortBy(books,(book)=>book.price)
+        console.log(JSON.stringify(bookSort,['name','price'],1))
+        const bookSortRev= _.sortBy(books,(book)=>book.price).reverse()
+        console.log(JSON.stringify(bookSortRev,['price'],1))
+
+
+        // 배열 기반 다중 할당
+        const allocateObj = {
+            name : 'AAA',
+            price : 1111,
+            date : 'BBB'
+        }
+        const {name,price} = allocateObj;   // 앞 2개만 할당
+        console.log(name,price) 
+        
+
+        // 얕은 복사 = 참조 복사
+        const buy =['milk','banana']
+        const buyCopy = buy
+        buyCopy.push('eggs')
+        console.log(buy, buyCopy)   
+        // 둘 다 Array(3) [ "milk", "banana", "eggs" ]
+
+        // 깊은 복사 = clone -> 완전히 독립적으로 작동
+        const buyDeep = ['milk','banana']
+        const buyDeepCopy = [...buyDeep]
+        buyDeepCopy.push('eggs')
+        // buyDeepCopy = [...buyDeep, 'eggs'] 로 바로 쓸수도 있음
+        console.log(buyDeep, buyDeepCopy)
+        // Array [ "milk", "banana" ]
+        // Array(3) [ "milk", "banana", "eggs" ]
+
+        // Abstraction
+        const students = []
+        students.push({ 이름: '구름', 국어: 87, 영어: 98, 수학: 88, 과학: 90})
+        students.push({ 이름: '별이', 국어: 92, 영어: 98, 수학: 96, 과학: 88})
+        students.push({ 이름: '겨울', 국어: 76, 영어: 96, 수학: 94, 과학: 86})
+        students.push({ 이름: '바다', 국어: 98, 영어: 52, 수학: 98, 과학: 92})
+        console.log(JSON.stringify(students,null,1))
+
+        // 1. for ... of로 단순 출력
+        let output = '이름\t총점\t평균\n'
+        for (const s of students){
+            const sum=s.국어 + s.영어 + s.수학 + s.과학
+            const avg = sum/4
+            output+= `${s.이름}\t${sum}점\t${avg}점\n`
+        }
+        console.log(output)
+
+        // 2. 객체 처리 함수
+        function getSum(student){
+            return student.국어 + student.영어 + student.수학 + student.과학 
+        }
+        function getAvg(student){
+            return getSum(student)/4
+        }
+
+        let output2='이름\t총점\t평균\n'
+        for(const s of students){
+            output2+= `${s.이름}\t${getSum(s)}점\t${getAvg(s)}점\n`
+        }
+        console.log(output2)
+
+        // 3. 배열 내부 객체에 메소드 추가
+        for (const student of students){
+            student.gettSum=function(){
+                return this.국어 + this.영어 + this.수학 + this.과학
+            }
+            student.gettAvg=function(){
+                return this.gettSum()/4
+            }
+        }
+        let output3='이름\t총점\t평균\n'
+        for(const s of students){
+            output3+= `${s.이름}\t${s.gettSum()}점\t${s.gettAvg()}점\n`
+        }
+        console.log(output3)
+
+        // CLASS 1
+        class Stu{
+            constructor (name,kor,eng,math,sci){
+                this.name=name;
+                this.kor=kor;
+                this.eng=eng;
+                this.math=math;
+                this.sci=sci;
+            }
+            getSum(){
+                return this.kor + this.eng + this.math + this.sci
+            }
+            getAvg(){
+                return this.getSum()/4
+            }
+            toString(){
+                return `${this.name}\t${this.getSum()}\t${this.getAvg()}\n`
+            }
+        }
+        const stuList=[]
+        stuList.push(new Stu('aaa',87,98,88,90))
+        stuList.push(new Stu('bbb',92,98,96,88))
+        stuList.push(new Stu('ccc',76,96,94,86))
+        stuList.push(new Stu('ddd',98,52,98,92))
+
+        let output4 = 'name\ttotal\tavg\n'
+        for(const s of stuList){
+            output4+=s.toString()
+        }
+        console.log(output4)
+
+        // CLASS 2 _ extends 
+        class Rectangle{
+            constructor(width,height){
+                this.width=width
+                this.height=height
+            }
+            getPerimeter(){
+                return 2*(this.width+this.height)
+            }
+            getArea(){
+                return this.width*this.height
+            }
+        }
+
+        class Square extends Rectangle{
+            constructor(length){
+                super(length,length)
+            }
+        }
+
+        const rectangle = new Rectangle(10,20)
+        console.log(rectangle.getArea(), rectangle.getPerimeter())
+
+        const square = new Square(10)
+        console.log(square.getArea(), square.getPerimeter())
+
+        const square2 = new Square(-10)     // 100 -40
+        console.log(square2.getArea(), square2.getPerimeter())  
+
+        // CLASS 3 _ private #
+        class SquareP{
+            #length // private 속성 선언
+            constructor (length){
+                if (length<=0){
+                    throw 'Length must be bigger than 0'
+                }
+                this.#length= length
+            }
+            getPerimeter(){ return 4*this.#length}
+            getArea(){return this.#length*this.#length}
+        }
+        const squareP = new SquareP(10)
+        // squareP.#length=-10  -> ERROR : property '#lenght' is not accessible outside class 'SquareP' b/c it has a private identifier
+        console.log(squareP.getArea(), squareP.getPerimeter())
+        // const squareP2 = new SquareP(-10)
+        // console.log(squareP2.getArea(), squareP2.getPerimeter()) -> throw Error
+
+        // CLASS 4 _ getter setter
+        class SquareGS{
+            #length
+            constructor(length){
+                this.setLenght(length)
+            }
+            setLenght(value){
+                if(value<=0){
+                    throw 'Length must be bigger than 0'
+                }
+                this.#length=value
+            }
+            getLenght(){
+                return this.#length
+            }
+            getPerimeter(){ return 4*this.#length}
+            getArea(){return this.#length*this.#length}
+        }
+        const squareGS = new SquareGS(10)
+        console.log(squareGS.getLenght())
+
+        // CLASS 5 _ static
+        class SquareS{
+            #length
+            static #counter = 0
+
+            // static은 인스턴스를 만들지 않고 사용할 수 있는 속성과 메소드
+            static get counter(){
+                return SquareS.#counter
+            }
+            static perimeterOf(length){
+                return length*4
+            }
+            static areaOf(length){
+                return length*length
+            }
+            constructor(length){
+                this.length=length
+                SquareS.#counter+=1
+            }
+
+            get length() {return this.#length}
+            get perimeter() {return this.#length*4}
+            get area() {return this.#length*this.#length}
+
+            set length (length){
+                if (length<=0){
+                    throw 'Length must be bigger than 0'
+                }
+                this.#length = length
+            }
+        }
+        const squareA = new SquareS(10)
+        const squareB = new SquareS(20)
+        const squareC = new SquareS(30)
+        console.log(`지금까지 생성된 SquareS 인스턴스는 ${SquareS.counter}개입니다.`)
+        console.log(`한 변의 길이가 20인 정사각형의 둘레는 ${SquareS.perimeterOf(20)}입니다.`)
+        console.log(`한 변의 길이가 30인 정사각형의 둘레는 ${SquareS.areaOf(30)}입니다.`)
+
+        // CLASS 6 _ override _ 부모 함수를 자식에서 다시 선언
+        class LifeCycle{
+            call(){
+                this.a()
+                this.b()
+                this.c()
+            }
+            a(){console.log('call A()')}
+            b(){console.log('call B()')}
+            c(){console.log('call C()')}
+        }
+        new LifeCycle().call()          // ABC
+
+        class nextLifeCylce extends LifeCycle{
+            a(){console.log('call a()')}
+        }
+        new nextLifeCylce().call()      // aBC
+
+        class anotherLifeCycle extends LifeCycle{
+            a(){
+                super.a()
+                console.log('call s()')
+            }
+        }
+        new anotherLifeCycle().call()   //AsBC
+
+        
+    </script>   
+</head>
+<body>
+</body>
+</html>
