@@ -633,7 +633,7 @@ unwrap() 메서드는 선택한 요소의 부모 요소를 삭제합니다. wrap
 </head>
 <body>
 	<h1 id="tit_1">
-	<strong>객체 조작 및 생성</strong>
+		<strong>객체 조작 및 생성</strong>
 	</h1>
 	<p class="ct1">내용1</p>
 	<p class="ct1">내용2</p>
