@@ -16,29 +16,21 @@
 <body>
 <table border="1">
 	<caption>내용보기</caption>
+<%@ include file='mysqlInfo.jsp' %>
 <%
 	String no = request.getParameter("no");
-	
-	String driver = "com.mysql.cj.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/hellojsp?serverTimezone=UTC";
-	String mysqlId = "root";
-	String mysqlPw = "1234";
 	String sql = "SELECT title, name, wTime, contents, rCnt, password FROM board2 where no =" + no;
-	String pw = null;	// 추가
+	String pw = null;
 	
 	int rCnt = 0;
-	try{
-		Class.forName(driver);
-	} catch(ClassNotFoundException e){
-		System.out.println("드라이버 로드 실패");
-	}
+
 	
 	try(Connection conn = DriverManager.getConnection(url, mysqlId, mysqlPw);
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql)){
 		if(rs.next()){
 			rCnt = rs.getInt("rCnt");
-			pw = rs.getString("password");	// 추가
+			pw = rs.getString("password");	
 %>
 	<tr>
 		<td>제목</td><td><%=rs.getString("title") %></td>

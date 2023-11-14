@@ -33,12 +33,19 @@
 					required></td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea cols="50" rows="10" name="contents"
-						required></textarea></td>
+				<td>취미</td>
+				<td>
+					<input type="checkbox" name="hobby" value="swimming">수영
+					<input type="checkbox" name="hobby" value="baseball">야구 
+					<input type="checkbox" name="hobby" value="soccer">축구 
+					<input type="checkbox" name="hobby" value="basketball">농구
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="등록"> <a
-					href="list.jsp"><input type="button" value="목록"></a></td>
+				<td colspan="2"><textarea cols="50" rows="10" name="contents" required></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="SUBMIT"> 
 			</tr>
 		</table>
 	</form>

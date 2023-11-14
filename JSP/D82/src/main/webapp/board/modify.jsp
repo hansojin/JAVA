@@ -12,23 +12,12 @@
 <form method="post" action="modifyOK.jsp">
 <table border="1">
 	<caption>수정하기</caption>
+<%@ include file='mysqlInfo.jsp' %>
 <%
 	String no = request.getParameter("no");
-	
-	String driver = "com.mysql.cj.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/hellojsp?serverTimezone=UTC";
-	String mysqlId = "root";
-	String mysqlPw = "1234";
 	String pw = null;
-	String sql = "SELECT title, name, wTime, contents, rCnt, password FROM board2 where no =" + no;
-	
 	int rCnt = 0;
-	
-	try{
-		Class.forName(driver);
-	} catch(ClassNotFoundException e){
-		System.out.println("드라이버 로드 실패");
-	}
+	String sql = "SELECT title, name, wTime, contents, rCnt, password FROM board2 where no =" + no;
 	
 	try( Connection conn = DriverManager.getConnection(url, mysqlId, mysqlPw);
 			Statement stmt = conn.createStatement();
