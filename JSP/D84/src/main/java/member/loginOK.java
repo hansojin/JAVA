@@ -28,6 +28,7 @@ public class loginOK extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");
 			session.setAttribute("id", request.getParameter("id"));
+			session.setAttribute("pw", request.getParameter("password"));
 		}else {
 			session.setAttribute("loginFailed", true);
 		}

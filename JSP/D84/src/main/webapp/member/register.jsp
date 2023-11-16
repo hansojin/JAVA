@@ -11,7 +11,7 @@
 		<table>
 			<caption style='font-weight:bold'>MEMBER REGISTER</caption>
 			<tr>
-				<td><label for="title">NAME</label></td>
+				<td><label for="name">NAME</label></td>
 				<td><input type="text" name="name" id="name" size="40" required></td>
 			</tr>
 			<tr>
