@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -26,4 +26,35 @@
     <!--
     <Manager pathname="" />
     -->
+    
+    <Resource
+    name="jdbc/myjsp"
+    auth="Container"
+    driverClassName="com.mysql.cj.jdbc.Driver"
+    url="jdbc:mysql://localhost:3306/myjsp?serverTimezone=UTC"
+    username="root"
+    password="1234"
+    type="javax.sql.DataSource"
+    maxTotal="50"
+    maxWaitMillis="1000"
+    removeAbandonedOnBorrow="true"
+    removeAbandonedTimeout="5"
+    logAbandoned="true"    
+    />
+    
+    <!-- 
+    1번 4번 수정시, 아래 빨간 네모 옆에, public to the server로 배포해주기 ! 
+    name="jdbc/testdb"  						1. name : JNDI로 호출될 이름을 설정한다. (접근 -> java:comp/env/jdbc/testdb)
+    auth="Container"							2. auth : DBCP를 관리할 관리자 (Container or Application)
+    driverClassName="com.mysql.cj.jdbc.Driver"	3. driverClassName : JDBC를 이용하기 위한 드라이버 클래스
+    url="jdbc:mysql://localhost:3306/test"		4. url : DB의 접속 URL(속성으로 자동 재 접속을 선택했다.)
+    username="root"								5. username : DB의 계정 명
+    password="1234"								6. password : 계정에 대한 비밀번호
+    type="javax.sql.DataSource"					7. type : 해당 resource의 return type(DataSource는 Connection 객체를 반환할 수 있다.)
+    maxTotal="50"								8. maxTotal : 최대 접속 허용 개수
+    maxWaitMillis="1000" 						9. DB 연결이 반환되는 Timeout의 최대 시간(-1은 무한 대기)
+    removeAbandonedOnBorrow="true"				10. 사용할 수 있는 커넥션이 부족해지면   DBCP(DataBase Connection Pool)은 버려진 커넥션을 찾아 복구한다.
+    removeAbandonedTimeout="5"					11. 커넥션이 버려졌다고 간주되기 전에 사용되지 않은 시간(초)를 설정합니다.
+    logAbandoned="true" 						12. 만일 커넥션 자원을 낭비한 코드 위치의 로그를 남깁니다.
+     -->    
 </Context>
