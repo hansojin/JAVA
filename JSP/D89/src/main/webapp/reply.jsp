@@ -8,25 +8,22 @@
 <title>REPLY</title>
 </head>
 <body>
-<%
-	BoardDTO dto = (BoardDTO)request.getAttribute("dto");
-%>
 	<form method="post" action="replyOK.do">
 		<table border="1">
 			<tr>
-				<td>번호</td><td><%=dto.getNum()%></td>
+				<td>번호</td><td>${dto.num}</td>
 			</tr>
 			<tr>
-				<td>조회수</td><td><%=dto.getHit() %></td>
+				<td>조회수</td><td>${dto.hit}</td>
 			</tr>
 			<tr>
 				<td>이름</td><td><input type="text" name="name" autofocus/></td>
 			</tr>
 			<tr>
-				<td>제목</td><td><input type="text" name="title" value="re: <%=dto.getTitle()%>"/></td>
+				<td>제목</td><td><input type="text" name="title" value="re: ${dto.title}"/></td>
 			</tr>
 			<tr>
-				<td>내용</td><td><textarea name="contents" cols="100" rows="15">&#10&#13<%="re:" + dto.getContents() %></textarea></td>
+				<td>내용</td><td><textarea name="contents" cols="100" rows="15">&#10&#13re: ${dto.contents}</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -35,10 +32,10 @@
 				</td>
 			</tr>
 		</table>
-		<input type="hidden" name="num" value="<%=dto.getNum()%>" />
-		<input type="hidden" name="groupNum" value="<%=dto.getGroupNum() %>" />
-		<input type="hidden" name="stepNum" value="<%=dto.getStepNum() %>" />
-		<input type="hidden" name="indentNum" value="<%=dto.getIndentNum() %>" />
+		<input type="hidden" name="num" value="${dto.num}" />
+		<input type="hidden" name="groupNum" value="${dto.groupNum}" />
+		<input type="hidden" name="stepNum" value="${dto.stepNum}" />
+		<input type="hidden" name="indentNum" value="${dto.indentNum}" />
 	</form>
 	
 	<!-- 

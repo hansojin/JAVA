@@ -8,33 +8,30 @@
 <title>VIEW</title>
 </head>
 <body>
-<%
-	BoardDTO dto = (BoardDTO)request.getAttribute("dto");
-%>
 	<form method="post" action="modifyOK.do">
 		<table border="1">
 			<tr>
-				<td>번호</td><td><%=dto.getNum() %></td>
+				<td>번호</td><td>${dto.num}</td>
 			</tr>
 			<tr>
-				<td>조회수</td><td><%=dto.getHit() %></td>
+				<td>조회수</td><td>${dto.hit}</td>
 			</tr>
 			<tr>
-				<td>이름</td><td><input type="text" name="name" value="<%=dto.getName() %>"/></td>
+				<td>이름</td><td><input type="text" name="name" value="${dto.name}"/></td>
 			</tr>
 			<tr>
-				<td>제목</td><td><input type="text" name="title" value="<%=dto.getTitle() %>"/></td>
+				<td>제목</td><td><input type="text" name="title" value="${dto.title}"/></td>
 			</tr>
 			<tr>
-				<td>내용</td><td><textarea name="contents" cols="100" rows="15"><%=dto.getContents() %></textarea></td>
+				<td>내용</td><td><textarea name="contents" cols="100" rows="15">${dto.contents}</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="hidden" name="num" value="<%=dto.getNum() %>">
+					<input type="hidden" name="num" value="${dto.num}">
 					<input type="submit" value="수정"> 
 					<a href="list.do">목록</a>
-					<a href="delete.do?num=<%=dto.getNum() %>">삭제</a>
-					<a href="reply.do?num=<%=dto.getNum() %>">답변</a>
+					<a href="delete.do?num=${dto.num}">삭제</a>
+					<a href="reply.do?num=${dto.num}">답변</a>
 				</td>
 			</tr>
 		</table>		
