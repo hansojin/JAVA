@@ -156,8 +156,6 @@ public class MemberDAO {
 	
 	public MemberDTO selectInfo(String id){
 		MemberDTO dto = getMDTO(id);
-		System.out.println(id);
-		System.out.println(dto.getTel());
 		return dto;
 		
 	}

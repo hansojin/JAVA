@@ -77,14 +77,15 @@ public class BulletinDAO {
 	
 	public ArrayList<BulletinDTO> selectPost(String sBox, String sBar){
 		ArrayList<BulletinDTO> list = new ArrayList<BulletinDTO>();
-		String sql = null;
+		String sql = "SELECT * FROM bulletin WHERE ";
 		if ("title".equals(sBox)) {
-			sql =  "SELECT * FROM bulletin WHERE title LIKE '%" + sBar + "%' ORDER BY GROUPNUM DESC, indentNum ASC, no DESC";
+			sql += "title LIKE '%" + sBar + "%'";
 		} else if ("titleCon".equals(sBox)) {
-			sql = "SELECT * FROM bulletin WHERE title = '" + sBar + "' OR contents LIKE '%" + sBar + "%' ORDER BY GROUPNUM DESC, indentNum ASC, no DESC";
+			sql += "title = '" + sBar + "' OR contents LIKE '%" + sBar + "%'";
 		} else if ("writer".equals(sBox)) {
-			sql =  "SELECT * FROM bulletin WHERE id = '" + sBar + "' ORDER BY GROUPNUM DESC, indentNum ASC, no DESC";
+			sql +=  "id = '" + sBar + "'";
 		}
+		sql+=" ORDER BY GROUPNUM DESC, indentNum ASC, no DESC";
 		System.out.println(sql);
 		try(Connection conn = dataSource.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql);

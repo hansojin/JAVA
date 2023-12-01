@@ -21,7 +21,6 @@ button{
 <input type='text' name='name' id='name' value="${dto.name}" readonly><br>
 <label for="id">아이디</label><br>
 <input type='text' name='id' id ='id' value="${dto.id}" readonly><br>
-<!-- <button>중복확인</button><br> -->
 <label for="nickname">닉네임</label><br>
 <input type='text' name='nickname' id ='nickname' value="${dto.nickname }" required><br>
 <label for="pw">비밀번호</label><br>
