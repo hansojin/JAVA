@@ -28,10 +28,10 @@
     -->
     
     <Resource
-    name="jdbc/myjsp"
+    name="jdbc/testdb"
     auth="Container"
     driverClassName="com.mysql.cj.jdbc.Driver"
-    url="jdbc:mysql://localhost:3306/myjsp?serverTimezone=UTC"
+    url="jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC"
     username="root"
     password="1234"
     type="javax.sql.DataSource"
