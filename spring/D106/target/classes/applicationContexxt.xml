@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 아래 Namespaces에서 p 선택 -->
+	<bean id="speaker" class="polymorphism.AppleSpeaker"/>
+	<bean id="samsungTV" class="polymorphism.SamsungTV" p:speaker-ref="speaker" p:price="2700000"/>
+	<!-- 	
+		p:변수명-ref="참조할 객체의 이름이나 아이디"
+		P:변수명="설정할 값"
+	 -->
+</beans>

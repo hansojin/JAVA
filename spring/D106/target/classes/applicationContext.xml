@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- polymorphism 예제 -->
+<!--<bean id="tv" class="polymorphism.SamsungTV" lazy-init="true" init-method="initMethod" destroy-method="destroyMethod"/> -->
+	<bean id="tv" class="polymorphism.SamsungTV">
+		<constructor-arg ref="sony"/>
+	</bean>
+	<bean id="sony" class="polymorphism.SonySpeaker"/>
+	
+	<!-- tv가 sony를 참조하니, sony객체가 먼저 생성되고, tv 객체가 생성됨
+	
+		lazy-init 속성 
+		ApplicationContext를 이용하여 컨테이너를 구동하면 컨테이너가 구동되는 시점에 스프링 설정 파일에 등록된 <bean>들을 생성하는 즉시 로딩(pre-loading) 방식으로 동작한다. 
+		그런데 어떤 <bean>은 자주 사용되지도 않으면서 메모리를 많이 차지하여 시스템에 부담을 주는 경우도 있다. 따라서 스프링에서는 컨테이너가 구동되는 시점이 아닌 
+		해당 <bean>이 사용되는 시점에 객체를 생성하도록 init-lazy 속성을 제공한다. 특정 <bean>을 등록할 때, lazy-init="true"로 설정하면, 스프링 컨테이너는 
+		해당 <bean>을 미리 생성하지 않고 클라이언트가 요청하는 시점에 생성하여 메모리 관리를 더 효율적으로 할 수 있게 된다. 
+		
+		scope 속성 
+		- singleton (default) : <bean id="tv" class="polymorphism.SamsungTV" scope="singleton" /> 
+							  : 해당 bean이 스프링 컨테이너에 의해 단 하나만 생성되어 운용됨 
+		- prototype : <bean id="tv" class="polymorphism.SamsungTV" scope="prototype" /> 
+					: 해당 <bean>이 요청될 때마다 매번 새로운 객체를 생성하여 반환 
+	-->
+	
+<!--의존관계 변경 : 아래처럼 class명만 바꾸면 자바 코드를 고칠필요가 없지! 
+	<bean id="speaker" class="polymorphism.SonySpeaker"/> -->
+	<bean id="speaker" class="polymorphism.AppleSpeaker"/>
+	<bean id="samsungTV" class="polymorphism.SamsungTV">
+<!--samsungTV에 speaker+price getter/setter가 없으면 주석처럼. 
+	있으면 아래처럼 property 이용
+		<constructor-arg>
+			<ref bean="speaker"></ref>
+		</constructor-arg>
+		<constructor-arg>
+			<value>2700000</value>
+		</constructor-arg>		-->
+		<property name="speaker" ref="speaker"></property>
+		<property name="price" value="2700000"></property>
+		<!-- 	
+		- Setter 인젝션을 이용하려면 <property> 엘리먼트를 사용
+		- name 속성값이 호출하고자 하는 메소드 이름, 호출되는 메소드는 set+methodName()
+		- Setter 메소드를 호출하면서 다른 <bean> 객체를 인자로 넘기려면 ref 속성을 사용하고,
+		- 기본형 데이터를 넘기려면 value 속성을 사용
+		-->
+	</bean>
+	
+	<!-- DI 예제 -->
+	<bean id="bMICalculator" class="DI.BMICalculator">
+		<property name="lowWeight" value="18.5"/>
+		<property name="normal" value="23"/>
+		<property name="overWeight" value="25"/>
+		<property name="obesity" value="30"/>
+	</bean>
+	
+	<bean id="myInfo" class="DI.MyInfo">
+		<property name="name" value="홍길동"/>
+		<property name="height" value="187"/>
+		<property name="weight" value="84"/>
+		<property name="hobbys">
+			<list>
+				<value>수영</value>
+				<value>요리</value>
+				<value>독서</value>
+			</list>
+		</property>
+		<property name="bmiCalculator">
+			<ref bean="bMICalculator"></ref>
+		</property>
+	</bean>
+	
+	<!-- util 예제 -->
+	<bean id="collectionList" class="util.CollectionList">
+		<property name="addressList">
+			<list>
+				<value>서울시 강남구 도곡동</value>
+				<value>경기도 수원시 영통구</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="collectionSet" class="util.CollectionSet">
+		<property name="addressList">
+			<set value-type="java.lang.String">
+				<value>서울시 강남구 도곡동</value>
+				<value>경기도 수원시 영통구</value>
+			</set>
+		</property>
+	</bean>
+	<bean id="collectionMap" class="util.CollectionMap">
+		<property name="addressList">
+			<map>
+				<entry>
+					<key><value>SJ</value></key>
+					<value>서울시 강남구 도곡동</value>
+				</entry>
+				<entry>
+					<key><value>JH</value></key>
+					<value>서울시 강남구 압구정동</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="collectionProperties" class="util.CollectionProperties">
+		<property name="addressList">
+			<props>
+				<prop key="SJ">서울시 강남구 도곡동</prop>
+				<prop key="JH">서울시 강남구 압구정동</prop>
+			</props>
+			<!-- 
+			key=value 형태의 데이터를 등록하고 사용할 때는 
+			java.util.Properties라는 컬렉션을 사용하며,
+			<props> 엘리먼트를 사용하여 설정한다.
+ 			-->
+		</property>
+	</bean>
+</beans>
+

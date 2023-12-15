@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:component-scan base-package="annotation"></context:component-scan>
+</beans>
+
+<!-- [Namespaces] 탭 - 'context'항목 체크 
+
+컴포넌트 스캔(component-scan) 설정 : 
+스프링 설정 파일에 애플리케이션에서 사용할 객체들을 <bean> 등록하지 않고 자동으로 생성하려면
+<context:component-scan/>이라는 엘리먼트를 정의
+
+스프링 컨테이너는 클래스 패스에 있는 클래스들을 스캔하여 "@Component가 설정된 클래스 들을 자동으로 객체 생성"
+-->

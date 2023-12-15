@@ -52,7 +52,8 @@
 			var table = document.getElementById("ajaxTable");
 			table.innerHTML = "";
 			if(searchRequest.readyState == 4 && searchRequest.status == 200){
-				var object = eval('(' + searchRequest.responseText + ')');
+// 				var object = eval('(' + searchRequest.responseText + ')');
+				var object = JSON.parse(searchRequest.responseText);
 				var result = object.result;
 				for(var i = 0; i < result.length ; i++){
 					var row = table.insertRow(0);
