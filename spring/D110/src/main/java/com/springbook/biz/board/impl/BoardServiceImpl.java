@@ -12,18 +12,15 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Autowired
 	private BoardDAOSpring boardDAO;
-//	private BoardDAO boardDAO;
 
-	public BoardServiceImpl() {
-	}
-	
 	@Override
 	public void insertBoard(BoardVO vo) {
-		boardDAO.insertBoard(vo);
-//		예외 강제 발생 -> transaction으로 롤백(Rollback) 처리 -> 위에 정상 처리된 insert도 취소됨
+//		boardDAO.insertBoard(vo);
 //		int num = 0;
 //		if(num==0) throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
-//		boardDAO.insertBoard(vo);
+		boardDAO.insertBoard(vo);
+//		트랜잭션은 메소드 단위로 관리 되므로 첫번째 입력이 성공했음에도 불구하고
+//		두번째 입력 전 예외가 발생했기 때문에 rollback 모든 작업 결과가 rollback 처리됨
 	}
 
 	@Override

@@ -4,7 +4,6 @@
     pageEncoding="UTF-8"%>
     
 <%
-	// 세션에 저장된 게시글 정보를 꺼낸다.
 	BoardVO board = (BoardVO)session.getAttribute("board");
 %>
 

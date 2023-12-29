@@ -3,9 +3,7 @@
 <%@page import="com.springbook.biz.board.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
     <%
-		// 세션에 저장된 글 목록을 꺼낸다.
 		List<BoardVO> boardList = (List)session.getAttribute("boardList");
     %>
 <!DOCTYPE html>
