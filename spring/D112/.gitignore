@@ -1,0 +1,7 @@
+src/main/resource
+
+pom.xml
+
+src/main/webapp/WEB-INF/config/web.xml
+
+target/

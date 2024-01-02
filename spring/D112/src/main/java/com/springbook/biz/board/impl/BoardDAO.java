@@ -16,18 +16,13 @@ import org.springframework.stereotype.Repository;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.JDBCUtil;
 
-// DAO(Data Access Object)
 @Repository("boardDAO")
-public class BoardDAO {
-	
-	// CRUD 기능의 메소드 구현
-	// 글 등록	
+public class BoardDAO {	
 	public void insertBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 insertBoard() 기능 처리");
 		final String SQL = "INSERT INTO board (title, writer, content) values(?, ?, ?)";
 		try(Connection conn = JDBCUtil.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(SQL))
-		{
+				PreparedStatement pstmt = conn.prepareStatement(SQL)){
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getWriter());
 			pstmt.setString(3, vo.getContent());
@@ -37,13 +32,11 @@ public class BoardDAO {
 		}
 	}
 	
-	// 글 수정
 	public void updateBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 updateBoard() 기능 처리");
 		final String SQL = "UPDATE BOARD SET TITLE=?, CONTENT=? WHERE SEQ=?";
 		try(Connection conn = JDBCUtil.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(SQL))
-		{
+				PreparedStatement pstmt = conn.prepareStatement(SQL)){
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
 			pstmt.setInt(3, vo.getSeq());
@@ -53,13 +46,11 @@ public class BoardDAO {
 		}
 	}
 	
-	// 글 삭제
 	public void deleteBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 deleteBoard() 기능 처리");
 		final String SQL = "DELETE FROM BOARD WHERE SEQ=?";
 		try(Connection conn = JDBCUtil.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(SQL))
-		{
+				PreparedStatement pstmt = conn.prepareStatement(SQL)){
 			pstmt.setInt(1,  vo.getSeq());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -67,7 +58,6 @@ public class BoardDAO {
 		}
 	}
 	
-	// 글 상세 조회
 	public BoardVO getBoard(BoardVO vo) {
 		System.out.println("===> JDBC로 getBoard() 기능 처리");
 		BoardVO board = null;
@@ -75,8 +65,7 @@ public class BoardDAO {
 		
 		try(Connection conn = JDBCUtil.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				ResultSet rs = pstmt.executeQuery())
-		{
+				ResultSet rs = pstmt.executeQuery()){
 			if(rs.next()) {
 				board = new BoardVO();
 				board.setSeq(rs.getInt("SEQ"));
@@ -92,7 +81,6 @@ public class BoardDAO {
 		return board;
 	}
 	
-	// 글 목록 조회
 	public List<BoardVO> getBoardList(BoardVO vo){
 		System.out.println("===> JDBC로 getBoardList() 기능 처리");
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
@@ -100,8 +88,7 @@ public class BoardDAO {
 		
 		try(Connection conn = JDBCUtil.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				ResultSet rs = pstmt.executeQuery())
-		{
+				ResultSet rs = pstmt.executeQuery()){
 			while(rs.next()) {
 				BoardVO board = new BoardVO();
 				board.setSeq(rs.getInt("SEQ"));
