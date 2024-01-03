@@ -5,3 +5,5 @@ pom.xml
 src/main/webapp/WEB-INF/WEB-INF/web.xml
 
 target/
+
+*.xml

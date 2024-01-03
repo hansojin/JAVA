@@ -1,7 +1,7 @@
-src/main/resource
+src/main/resources
 
 pom.xml
 
-src/main/webapp/WEB-INF/config/web.xml
+src/main/webapp/WEB-INF/WEB-INF/web.xml
 
 target/
