@@ -60,8 +60,10 @@ public class BoardController {
 		System.out.println("글 목록 검색 처리");
 		
 		// Null Check
-		if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
-		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+		if(vo.getSearchCondition() == null) 
+			vo.setSearchCondition("TITLE");
+		if(vo.getSearchKeyword() == null) 
+			vo.setSearchKeyword("");
 		
 		model.addAttribute("boardList", boardService.getBoardList(vo));		// Model 정보 저장 
     	return "getBoardList.jsp";							
